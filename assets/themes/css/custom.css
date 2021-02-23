@@ -1,0 +1,126 @@
+.error p{
+	font-weight:normal;
+	color:red;
+}
+.flat-blue .navbar .navbar-nav > li.subactive > a, .flat-blue .navbar.navbar-default .navbar-nav > li.subactive > a {
+    color: #22a7f0;
+}
+a, a:hover, a:active, a:focus {
+	outline: none;
+}
+input[type="file"]
+{
+	padding: 0 0 34px;
+}
+.custom-card{
+	overflow:unset;
+}
+.flat-blue .bootstrap-select .btn.btn-default{
+	background-color: #fff ; 
+	border-color: #ccc;
+}
+.boostrap-select-div .error{
+	width:100%;
+}
+/*
+.tabs-vertical-env {
+    margin-bottom: 20px;
+}
+.tabs-vertical-env::before, .tabs-vertical-env::after {
+    content: " ";
+    display: table;
+}
+.tabs-vertical-env::after {
+    clear: both;
+}
+.tabs-vertical-env .tabs-vertical {
+    margin-bottom: 0;
+}
+.tabs-vertical-env .tabs-vertical + .tab-content {
+    margin-bottom: 0;
+}
+.tabs-vertical {
+    background: #f5f5f6 none repeat scroll 0 0 padding-box;
+    border: 1px solid #ebebeb;
+    border-radius: 3px;
+    float: left;
+    margin-bottom: 20px;
+    width: 20%;
+}
+.tabs-vertical > li {
+    border-bottom: 1px solid #ebebeb;
+}
+.tabs-vertical > li:first-child > a {
+    background-clip: padding-box;
+    border-radius: 3px 3px 0 0;
+}
+.tabs-vertical > li:last-child {
+    border-bottom: 0 none;
+}
+.tabs-vertical > li:last-child > a {
+    background-clip: padding-box;
+    border-radius: 0 0 3px 3px;
+}
+.tabs-vertical > li:hover > a {
+    background-color: rgba(255, 255, 255, 0.3);
+    color: #586376;
+}
+.tabs-vertical > li.active > a {
+    background-color: #ffffff;
+    color: #373e4a;
+    display: block;
+    position: relative;
+}
+.tabs-vertical > li.active > a::before {
+    border-color: transparent transparent transparent #ebebeb;
+    border-style: solid;
+    border-width: 20px 0 20px 13px;
+    content: "";
+    display: block;
+    height: 0;
+    margin-right: -12px;
+    margin-top: -1px;
+    position: absolute;
+    right: -1px;
+    top: 0;
+    width: 0;
+}
+.tabs-vertical > li.active > a::after {
+    border-color: transparent transparent transparent #fff;
+    border-style: solid;
+    border-width: 18px 0 18px 12px;
+    content: "";
+    display: block;
+    height: 0;
+    margin-right: -12px;
+    margin-top: -1px;
+    position: absolute;
+    right: 0;
+    top: 2px;
+    width: 0;
+}
+.tabs-vertical + .tab-content {
+    box-sizing: border-box;
+    float: right;
+    margin-bottom: 20px;
+    padding-left: 25px;
+    width: 80%;
+}
+.tabs-vertical.right-aligned {
+    float: right;
+}
+.tabs-vertical.right-aligned > li.active > a::before, .tabs-vertical.right-aligned > li.active > a::after {
+    right: auto;
+    transform: rotate(180deg);
+}
+.tabs-vertical.right-aligned > li.active > a::before {
+    left: -13px;
+}
+.tabs-vertical.right-aligned > li.active > a::after {
+    left: -12px;
+}
+.tabs-vertical.right-aligned + .tab-content {
+    padding-left: 0;
+    padding-right: 25px;
+}
+*/

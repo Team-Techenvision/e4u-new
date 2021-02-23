@@ -1,0 +1,1416 @@
+
+/********************/
+/***RESPONSIVE CODE** */
+
+
+/*******************/
+
+
+
+@media screen and (min-width :1025px) and (max-width: 1440px) {
+/**8-11-19**/
+.teaching-text {
+    right: 60px;
+    margin-top: 25px;
+}
+.video-section h3 ,.video-section h4{
+    font: 20px/20px Gotham-Medium;
+	margin-bottom:10px;
+	}
+	.wehelp-wrapper {
+    padding: 100px 0px 30px 0px;
+}
+.alert-content-left {
+    width: 75%;
+}
+.alert-content-right {
+    width: 18%;
+}
+/**8-11-19**/
+
+	.banner-text p {
+		font: 45px/normal Gotham Book;
+		color: #000000;
+		width: 498px;
+	}
+		/**dashboard**/	
+	div#standard-carousel .owl-next {
+    right: -45px;
+}
+div#standard-carousel .owl-prev {
+    left: -45px;
+}
+}
+
+@media screen and (min-width :992px) and (max-width: 1024px) {
+    .header-inner.home-header.newClass{
+        width:100vw !important;
+    }
+    .alert-box .nav-tabs .nav-item {
+        padding: 14px 10px 14px 11px;
+    }
+    .alert-wrapper .alert-box ul {
+        padding: 30px 0px 30px 0px;
+    }
+.banner-text p {
+font: 45px/normal Gotham Book;
+ color: #000000;
+ width: 100%;
+}
+.home-slider .owl-nav .owl-prev {
+left: 0px;
+background: none;
+}
+.home-slider .owl-nav .owl-next {
+ right: 0px;
+ background: none;
+}
+		/***dashboard***/
+	.col-md-2.col-sm-12.pdf-sec {
+    max-width: 25%;
+} 
+div#standard-carousel .owl-next {
+    right: -16px;
+}
+div#standard-carousel .owl-prev {
+    left: -16px;
+}
+}
+
+
+@media (min-width:992px) and (max-width:1199px)
+{
+.header-right .menu-btn {
+
+    padding: 15px 15px;
+}
+	/*take-test*/
+	.question-section 
+	{
+		padding: 0px 100px;
+	}
+	/*take-test*/
+	/**8-11-19**/
+	.Contaction-Sec {
+		width: 820px;
+	}
+}
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+
+ 
+.banner-text {
+    margin-top: 180px;
+}
+
+.header-right .menu-btn {
+
+    padding: 15px 15px;
+}
+
+.banner-text p {
+font: 45px/normal Gotham Book;
+ color: #000000;
+ width: 100%;
+}
+
+/*header*/
+.header-right li {  
+margin: 0px 0px 0px 0px;
+}
+.alert-container .alert-box ul li a {
+padding: 14px 30px 14px 29px !important;
+}
+
+
+.header-right .menu-btn {
+    font: 16px/normal Gotham-Medium;
+    padding: 15px 21px;
+}
+}
+
+
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .row.video-division{
+        padding-bottom:90px;
+    }
+    .footer-wrapper .col-lg-4{
+        max-width:100%;
+        flex:0 0 100%;
+    } 
+    .footer-wrapper .col-lg-5{
+        flex:0 0 70%;
+        max-width:70%;
+    }
+    .footer-wrapper .col-lg-3{
+        flex:0 0 30%;
+        max-width:30%;
+        padding-top: 4px;
+    }
+    .answer-wrapper .question-section{
+        width:100%;
+    }
+    .answer-wrapper .question-section:last-child{
+        padding-bottom:0px;
+        margin-bottom:0px;
+        border-bottom:none;
+    }
+    .leaderboard-table.table-responsive {
+        padding: 25px 0px 10px 0px;
+    }
+    .header-right .menu-btn:hover {
+        padding: 10px 10px !important;
+    }
+/* footer */
+
+.footer-copyright p {
+    margin: 3px 0px 20px 0px;
+}
+.footer-socialmenu span{
+    padding:0px;
+}
+.footer-menu li {
+display: inline-block;
+padding: 10px 7px 0px 5px;
+font: 14px/normal Gotham Book;
+}
+.footer-copyright {
+    padding: 30px 0px 30px 39px;
+}
+.footer-socialmenu {
+    padding: 0px 0px 0px 0px;
+}
+.footer-socialmenu img {
+    padding: 0px 0px 0px 5px;
+}
+/*index Page */
+.registration-title h1 {
+font: 25px/32px Gotham Book;
+}
+.registration h2 {
+    font: 20px/32px Gotham Book;
+}
+.student-slider h2 {
+font: 26px/normal Gotham Book;
+}
+
+.courses .courses-details span {
+font: 18px/normal Gotham Book;
+}
+.courses p {
+font: 14px/26px Gotham Book;
+}
+
+.banner-text p {
+font: 45px/normal Gotham Book;
+ color: #000000;
+ width: 100%;
+}
+
+
+/*header*/
+.header-right .menu-btn {
+    font: 14px/normal Gotham-Medium;  
+}
+
+.header-right .menu-btn {
+    padding: 10px 10px;
+}
+
+.header-right li {
+    display: inline-block;
+    margin: 0px 0px 0px 0px;
+}
+
+.header-right li.nav-item.dropdown span {
+    font: 14px/normal Gotham-Medium;
+    padding: 15px 5px 0px 0px;
+}
+.header-right .nav-link {
+    display: block;
+    padding: 0rem 0rem;
+}
+
+header nav {
+    float: right;
+    padding: 15px 0px 0px 0px;
+}
+/*End header */
+
+/*About US */
+.sec-left {
+width: 50%;
+float: left;
+}
+.sec-right {
+width:50%;
+float: left;
+padding: 15px 5px 5px 5px;
+}
+
+.sec-right-top h4 {
+    font: 16px/normal Gotham-Medium;
+    margin: 0px 0px 10px 0px;
+}
+.sec-right-bottom h4 {
+    font: 14px/normal Gotham Book;
+}
+.teaching-text {
+    padding: 15px 15px;
+    position: initial;
+    right: 0px;
+    margin-top: 20px;
+}
+.header-right .menu-btn {
+
+    padding: 10px 6px !important;
+}
+ /* Alert PAge */
+.alert-content-right {
+    width: 20%;
+	 float: left;
+}
+ .alert-content-left {
+    width: 80%;
+    float: left;
+	padding: 0px 15px;
+} 
+.alert-content-left h2 {
+    font: 22px/26px Gotham Book;
+    display: inline-block;
+}
+
+.alert-content-left span {
+    font: 18px/28px Gotham-Medium;
+    color: #484848;
+}
+
+.alert-content-left p {
+    font: 20px/26px Gotham-Bold;
+    color: #000000;
+}
+.alert-content-left .title span {
+    font: 14px/28px Gotham-Medium;
+    color: #484848;
+}
+.alert-container .alert-box ul li a {
+    padding: 14px 15px 14px 15px;
+
+}
+
+/*End of alert PAge */
+
+/* Leaderboard */
+.leaderboard-table .table thead th {
+    font: 14px/36px Gotham-Medium;
+}
+.top-content span {
+    font: 22px/26px Gotham Book;
+}
+/* End */
+
+/* Edit Profile */
+	
+.editprofile-wrapper {
+ margin: 0px 5%;
+}
+/*8-11-19**/
+.video-section h4 {
+    font: 18px/20px Gotham-Medium;
+}
+}
+@media(min-width:768px)
+{
+
+/* Create Test */
+   .create-container .tab-button-outer {
+      position: relative;
+      z-index: 2;
+      display: block;
+    }
+    .create-container .tab-select-outer {
+      display: none;
+    }
+    .create-container.tab-contents {
+      position: relative;
+      top: -1px;
+      margin-top: 22px;
+      box-shadow: 0px 2px 7px 0px #888888;
+      width: 600px;
+      margin: 40px auto;
+      background: #fff;
+    }
+/* End */
+.home-index .header-inner {
+    height: 80px;
+    transition: all 0.5s;
+    z-index: 997;
+    transition: all 0.5s;
+    padding: 20px 0;
+   background: transparent;
+   border:none
+  
+}
+}
+
+@media(max-width:767px)
+{
+    .banner-text .btn-btn-dark:hover {
+        padding: 12px 40px 12px 40px;
+        background-position-y: 13.5px !important;
+        background-position-x: 104px;
+    }
+    .student-slider{
+        padding:50px 0px 40px 0px;
+    }
+.header-right li.nav-item.dropdown .dropdown-menu.show {
+    right: auto;
+    left: 28px !important;
+}
+    .alert-box .nav-tabs .nav-item .nav-link{
+        display: inline-flex;
+    }
+    .header-inner.home-header.newClass{
+        width:100vw !important;
+    }
+    .question-section.questions-images .options-display-images ul li label:before{
+        top:0px;
+    }
+    .checkbox.login-check label, .login-forget-btn a {
+        font: 13px Gotham Book;
+    }
+    .dashboard-notice .notice-cont{
+        border-bottom:none;
+    }
+    .dashboard-notice .owl-nav .owl-prev{
+        left:10px;
+    }
+    .dropdown-wrapper .dropdown select{
+        width:100%;
+    }
+    .Contaction-Sec .form-group{
+        margin-bottom:10px;
+    }
+    .chapters_list ul.unstyled.centered li{
+        width:100%;
+    }
+    .register-innercontainer .gender ul li label
+    {
+        padding-left:5px;
+    }
+    .create-container .tab-contents{
+        padding:0px;
+    }
+    .create-container .styled-checkbox + label{
+        padding-left:15px;
+    }
+    .create-container .styled-checkbox + label:before{
+        position:absolute;
+        left:-8px;
+    }
+    .create-container .styled-checkbox:checked + label:after{
+        left:-6px;
+    }
+    .create-container .login-btn.proceed {
+        margin: 0px 10% 30px 0px;
+    }
+    .meeting-part h4{
+        padding-left:15px;
+    }
+    .leaderboard-table tr td span.participant-name{
+        display: block;
+        line-height: 21px;
+    }
+    .leaderboard-table.table-responsive {
+        padding: 25px 0px 0px 0px;
+    }
+    .answer-wrapper .question-section:last-child{
+        border-bottom:none;
+        padding-bottom:0px;
+    }
+    .question-section.questions-images .options-modified ul li{
+        width:17%;
+    }
+    .questions-queue .answered-unanswered ul li{
+        padding:10px 4px;
+    }
+    .questions-queue .answered-unanswered ul li span{
+        font-size: 18px;
+    }
+   
+    .question-section.questions-images .options-radioboxes ul{
+        display:flex;
+        flex-wrap: wrap;
+    }
+    .question-section.questions-images .options-radioboxes ul li {
+        flex:0 0 50%;
+        width:50%;
+        max-width:50%;
+        padding-bottom:4px;
+    }
+    .question-section.questions-images .options-radioboxes ul li p{
+        margin-bottom:0px;
+    }
+    /*.question-section.questions-images .options-radioboxes ul li{
+        width:22%;
+    }*/
+    .editprofile-wrapper .picture{
+        margin-top:15px;
+    }
+    .edit-profile .empty-div{
+        display:none;
+    }
+    .edit-subscription{
+        padding: 20px 0px 20px 0px;
+    }
+    .edit-profile label.change{
+        position: relative;
+    }
+    .testresult-wrapper .test-result .col-md-2{
+        width:50%;
+    }
+    #open_material .modal-content{
+        width:100% !important;
+    }
+    .alert-innerbox .top-content{
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+    }
+    .topic-section {
+        margin-top: 40px;
+    }
+    .topic-section .pdf-sec {
+        width: 45%;
+        float: none;
+        margin: 0 auto;
+        margin-right: auto;
+    }
+    .topic-section .pdf-sec img{
+        width:100%;
+    }
+    .inner-topic-Sec .pdf-sec p{
+        padding-left:6px;
+    }
+    .topic-section .pdf-sec:last-child{
+        margin-right:auto;
+    }
+    .register-innercontainer .gender ul li{
+        width:48%;
+    }
+    .dashboard-notice .owl-nav .owl-next{
+        right:0px;
+    }
+    .header-inner .flex-header{
+        justify-content: space-between;
+    }
+    header .logo{
+        width:35%;
+    }
+    .header-right .dropdown-menu.show{
+        transform: translate3d(74px, 58px, 0px) !important;
+        height: 100px;
+    overflow-y: auto;
+    left: 8% !important;
+    }
+    .header-right .dropdown-menu.show a{
+        padding:7px 10px;
+    }
+    .alert-dwd .dropdown .dropdown-menu {
+        min-width:auto;
+    }
+/*submitting-popup*/
+.modal.submitting-popup 
+{
+ overflow-y: hidden;
+}
+.modal.submitting-popup .modal-dialog
+{
+  width:97%;
+}
+.modal.submitting-popup .modal-dialog .modal-content .modal-body h2 
+{
+ padding-bottom: 0px;
+ font: 20px/normal Gotham Book;
+}
+.modal.submitting-popup .modal-dialog .modal-content .modal-body
+{
+ padding:50px 40px;
+}
+/*submitting-popup*/
+/* About Page */
+.video-section h4 {
+font: 16px/28px Gotham-Medium;
+}
+.aboutus-heading h2 {
+padding: 80px 0px;
+font: 24px/normal Gotham Book;
+    text-align: center;
+}
+
+.aboutus-page .aboutus-description p {
+font: 14px/27px Gotham-Medium; 
+}
+.aboutus-page .aboutus-description h3 {
+font: 22px/normal Gotham-Medium;
+margin-bottom: 15px;
+}
+
+.wehelp-heading h2 {
+font: 18px/26px Gotham-Medium;
+margin: 0px;
+}
+.wehelp-wrapper {
+padding: 10px 15px 19px 15px;
+}
+
+.sec-right-bottom p {
+font: 14px/22px Gotham-Medium;
+padding-top: 10px;
+}
+
+.sec-right-bottom h4 {
+    color: #555555;
+    font: 14px/normal Gotham Book;
+}
+
+
+/*End of About Page */
+
+/*index & header */
+
+.home-index header nav {
+    margin-top: 0px;
+}
+.courses h1 {
+    font: 22px/33px Gotham Book;
+    text-align: center;
+    padding: 15px;
+	font-weight:bold;
+}
+.student-slider p {
+    font: 14px/22px Gotham Book;
+    padding-bottom: 15px;
+    padding: 15px 15px 0px 15px;
+    position: relative;
+}
+.student-slider h2 {
+    font: 22px/normal Gotham Book;
+    padding-bottom: 15px;
+}
+.registration-title h1 {
+    font: 26px/41px Gotham Book;
+}
+.registration-wrapper {
+    padding-top: 25px;
+}
+.registration {
+    font: 40px/normal Gotham Book;
+    text-align: center;
+    padding-top: 10px;
+    background: #fd6500;
+}
+.registration p {
+    font: 16px/26px Gotham Book;
+    color: #fea366;
+}
+.mobile-course
+{
+display:block;
+}
+.desktop-course
+{
+display:none;
+}
+
+.banner-text p span {
+font: 26px/38px Gotham-Medium;
+color: #fff;
+}
+
+.banner-text {
+    margin-top: 0px;
+    padding: 35px 0px 0px 55px;
+    display: flex;
+}
+.banner-text p {
+    font: 24px/38px Gotham Book;
+    color: #fff;
+    width: 100%;
+    margin-top:30px;
+}
+a.banner-course {
+    background-color: #fd6500;
+    color: #fff;
+    padding: 12px 40px 12px 40px;
+    border-radius: 15px;
+    font: 14px/normal Gotham-Medium;
+    position: relative;
+    background-position-y: 17px !important;
+    background-position-x: 103px;
+}
+
+.header-wrapper {
+    background: url(../images/banner-mobile.png) no-repeat center !important;
+    height:380px;
+    display:inline-block;
+    width:100%;
+}
+.header-wrapper .page_content{
+    height:100%;
+    padding-top:0px;
+}
+.menu-toggle{
+ display:block;
+ float: right;	 
+ line-height:55px;
+ font-size:26px;
+ cursor: pointer;
+ color: #484848;
+ 
+}  
+.home-index .logo img {
+    width: 60%;
+}
+
+
+#header {
+    margin-top: 0px;
+    width: 100%;
+    float: left;
+    background: #fff;
+}
+header nav{ 
+  position:absolute;
+  width:100%;
+  height:100vh;
+  background:#fd6a09;
+  top:80px;
+  left:-100%;
+  transition:0.5s;
+  z-index:999;
+
+  
+}
+
+header nav.active{
+ left:0px;
+ }
+ 
+header nav ul{
+  display:block;
+  text-align:center;
+  padding: 0px;
+    margin: 0px;
+}
+
+
+
+.header-right li {
+    text-decoration: none;
+    display: block;
+      margin: 0px 0px 0px 0px;
+    color: #fff;
+	border-bottom: 1px solid #eee;
+	padding: 20px 0px;
+}
+
+.header-right li.nav-item.dropdown {
+    margin: 0px 0px 0px 0px;
+}
+
+.header-right .menu-btn {
+    font: 16px/normal Gotham-Medium;
+    color: #ffffff;
+    padding: 15px 35px;
+}
+
+.header-right li.nav-item.dropdown span {
+    font: 16px/normal Gotham-Medium;
+    color: #f7f7f7;
+    padding: 15px 5px 0px 0px;
+}
+
+.header-right .nav-link {
+    display: block;
+    padding: 0rem 1rem;
+    color: #fff;
+}
+/* End header */
+
+
+/* About us */
+
+.sec-left, .sec-right {
+    width: 100%;
+}
+.sec-right-top p {
+    font: 12px/normal Gotham Book;
+}
+.sec-right-top h4 {
+    font: 18px/normal Gotham-Medium;
+}
+.teaching-text {
+    box-shadow: 0 0 13px #efefef;
+    background: #fff;
+    padding: 15px 15px;
+    position: initial;
+    right: 0px;
+    margin-top: 45px;
+}
+
+.container-fluid {
+    padding: 0px 15px;
+}
+/*test-result*/
+.time-details {
+ padding: 15px 0px;
+}
+.answer-wrapper {
+padding: 15px 0px;
+}
+.congrats-msg p {
+font: 18px/26px Gotham Book;
+font-weight: bold;
+}
+.congrats-msg span {
+font: 18px/34px Gotham Book;
+}
+.time-details span {
+font: 16px/30px Gotham Book;
+display: block;
+padding-bottom:10px;
+}
+
+.time-details p {
+font: 18px/26px Gotham Book;
+margin: 0px 0px 5px 0px;
+}
+.test-result .question {
+text-align: center!important;
+font: 16px/6px Gotham Book;
+}
+
+.testresult-wrapper h1 {
+font: 22px/20px Gotham Book;
+padding: 15px 0px 0px 0px;
+}
+/* End of test-result*/
+.header-right .menu-btn {
+
+    padding: 15px 15px;
+}
+
+/*thank youu page */
+.thankyou-wrapper p, .payment-wrapper p {
+    margin: 10px 4% 20px 5%;
+
+}
+
+/*Privacy Privacy */
+
+.privacy-wrapper h1 
+{
+font: 22px/26px Gotham Book;
+}
+
+
+/*****login-popup**/
+  .popup-login-section {
+    width: 100%;
+    padding: 30px 20px 30px 20px;
+}
+.account-creation {
+    margin: 0px 0;
+    padding: 30px 0 30px 20px;
+	width:100%;
+	}
+	.modal-body.login-bdy .close{
+    position: absolute;
+    right: 0px !important;
+    top: -20px;
+	}
+	.modal-dialog.login-dialog {
+    max-width: 100%;
+	}
+	.popup-login-section.froget-psd{
+		width:100%;
+	}
+	button.close.frgt-close {
+		right: 0;
+	}
+	.popup-login-section.reset-psd, .popup-login-section.change-psd {
+		width: 100%;
+		}
+		.popup-login-section.reset-psd, .popup-login-section.change-psd {
+		padding: 40px 20px 40px 20px;
+	}
+	
+/* leaderboard page */
+.top-content span {
+font: 18px/26px Gotham Book;
+display: block;
+}
+.dropdown-wrapper .dropdown {
+display: block;   
+padding: 10px 0px;
+}
+.std-month-drd.pull-right {
+float: left;
+}
+.leaderboard-table .table thead th {
+text-align: center;
+font: 14px/30px Gotham-Medium;
+}
+.leaderboard-table td:nth-child(2) {
+text-align: left;
+font: 15px/61px Gotham Book;
+}
+/* End of leaderboard page */
+
+/*Alert PAge */
+.alert-dwd .dropdown {
+    display: inline-block;
+    padding: 0px 0px 0px 15px;
+}
+.alert-dwd.pull-right {
+    float: left;
+   
+}
+/*End of alert PAge*/
+
+.alert-content .btn-btn {
+    padding: 12px 45px 12px 30px;
+    background-position-x: 135px;
+    margin-left: 10px;
+}
+
+/* alert*/
+	.alert-content-right {
+    display: none;
+    }
+	.alert-content-left h2 {
+    font: 22px/26px Gotham Book;
+    padding: 15px 10px 10px 10px;
+    display: inline-block;
+	}
+	.alert-content-left span {
+	font: 16px/26px Gotham-Medium;
+    padding: 0px 15px;	
+	}
+	.alert-content-left .title span {
+    font: 16px/26px Gotham-Medium;
+	padding: 10px 10px 0px 10px;
+	float:left;
+	display:block;
+    }
+	.alert-content-left p {
+	  font: 18px/26px Gotham-Bold;		
+      margin: 0px 0px 10px 0px;
+	  padding: 0px 15px;
+	}
+	.alert-content-left {
+    width: 100%;
+    float: left;
+   } 
+   .alert-container .alert-box ul {
+    padding: 37px 0px 15px 0px;
+    }
+	
+	.alert-container .alert-box ul li a {
+    padding: 14px 31px 14px 19px;
+    display: inline-block;
+     }
+	 .alert-btn {
+    margin: 15px 0px 15px 0px;
+    display: block;
+}
+	/*End of alert */
+	
+/*faq*/
+ .alert-content.faq-page .myaccordion .btn
+ {
+  font:16px/normal Gotham Book;
+  text-align:left;
+ }
+ .alert-content.faq-page .myaccordion ul li 
+  {
+    font: 14px/normal Gotham Book;
+  }
+  .alert-content.faq-page .myaccordion .fa-stack
+   {
+    text-align:center;
+  }
+ /*faq*/
+ /*take-test*/
+ .questions-queue
+ {
+   padding-bottom: 20px;
+   margin-bottom: 20px;
+ }
+ .ques_ans_options li span 
+ {
+    width: 30px;
+    padding: 6px 0;
+    font: 16px Gotham Book;
+}
+
+ /*take-test*/
+
+
+/************contact-page*****/
+.Contaction-Sec {
+	width: 100%;
+    margin: 0 auto;
+    position: unset; 
+}
+.contact-map {
+    height: auto;
+	margin-bottom: 25px;
+}
+.Contaction-Sec .row {
+	margin:0px;
+}
+.loc-form-Sec {
+    padding: 20px;
+}
+.location-input input::placeholder {
+    font-size: 13px;
+}
+	/***dashboard***/
+section.dashboard-part h2 {
+    font: 23px Gotham Book;
+}
+section.dashboard-part {
+    margin: 20px 10px 20px 10px;
+}
+.topic-img img {
+    width: 100%;
+    height: auto;
+}
+.notice-cont {
+	border-right: 0px solid #696969;
+    border-bottom: 1px solid #696969;
+    padding: 10px 0px;
+}
+div#myModal iframe {
+    width: 100%;
+}
+div#standard-carousel .owl-next {
+    right: 0px;
+}
+div#standard-carousel .owl-prev {
+    left: 0px;
+}
+/***8-11-19***/
+.pagenotfound-content img {
+    padding: 30px 0px 0px 0px;
+}
+.pagenotfound-wrapper p {
+    margin: 10px 5% 20px 5%;
+}
+div#aboutVideo iframe{
+	width:100%;
+}
+.sec-wrapper {
+    width: 100%;
+}
+/**8-11-19**/
+.alert-content-left p{
+    clear: both;
+}
+select#tab-select {
+    border: 1px solid #fd6500;
+    background: #fd6500;
+    color: #fff;
+    padding: 10px 10px;
+    width: 100%;
+    height: 45px;
+}
+.thankyou-content img, .payment-content img {
+    padding: 15px 0px 0px 0px;
+}
+.alert-wrapper ul.nav.nav-tabs {
+    display: block;
+}
+.editprofile-wrapper {
+   padding-top: 0px;
+}
+.header-right .menu-btn:hover {
+    background-color: #fff;
+    color: #fd6500;
+    padding: 8px 28px;
+}
+
+/*14-05-20*/
+.create-container .login-btn.proceed
+{
+ margin-top:10px;
+}
+/*14-05-20*/
+}/*End of Device */
+
+
+
+@media screen and (min-width :768px) and (max-width: 991px) {
+    .alert-box .nav-tabs .nav-item .nav-link{
+        display:inline-flex;
+    }
+    .banner-text .btn-btn-dark:hover{
+        background-position-y: 18px !important;
+    }
+    a.banner-course{
+        background-position-y: 20px !important;
+    }
+    .header-inner.home-header.newClass{
+        width:100vw !important;
+    }
+    .login-blureffect2 .modal-body.login-bdy button.close.frgt-close{
+        right:23% !important;
+    }
+    .topic-section{
+        margin-top:20px;
+    }
+    .courses{
+        padding:40px 0px 0px 0px;
+    }
+    .registration{
+        padding-top:0px;
+    }
+    .registration-title h1{
+        padding-top:40px;
+    }
+    #changemodal .modal-body.login-bdy{
+        width: 463px;
+        margin: 0 auto;
+    }
+    .alert-wrapper .alert-box ul {
+        padding: 10px 0px 10px 0px;
+    }
+    #changemodal .modal-body.login-bdy button.close.frgt-close{
+        right:20px !important;
+    }
+    .alert-box .nav-tabs .nav-item{
+        width:33.33%;
+    }
+    .popup-login-section{
+        padding:57px 35px 30px 35px;
+    }
+    .student-slider{
+        padding: 50px 0px 40px 0px;
+    }
+    .topic-section .pdf-sec{
+        margin-right:14px;
+    }
+	.home-slider .owl-nav .owl-prev {
+		left: -17px;
+		background: none;
+	}
+	.home-slider .owl-nav .owl-next {
+		right: -17px;
+		background: none;
+	}
+	.Contaction-Sec .loc-form-inner .message{
+        flex:0 0 80%;
+        max-width:80%;
+        width:80%;
+    }
+    .contact-btn{
+        margin-top:9px;
+    }
+    #open_material .modal-content{
+        width:100% !important;
+    }
+    /*take-test*/
+    .test-mark-box .test-result .col-md-2{
+        flex:0 0 25%;
+        max-width:25%;
+        width:25%;
+    }
+ .test-overview .exam-details
+ {
+    width: 33.33%;
+	min-height: 104px;
+	padding:20px 10px;
+ }
+ .question-section 
+ {
+    padding: 0px 0px;
+}
+.test-overview .exam-details h3{
+    font:15px/normal Gotham Book;
+}
+ .test-overview .exam-details:after
+ {
+	height: 100%;
+ }
+ /*take-test*/
+ 	  /**contact**/
+  .Contaction-Sec {
+    width: 100%;
+	}
+	.Contaction-Sec .row {
+	margin:0px;
+}
+	/***dashboard***/
+	
+.col-md-2.col-sm-12.pdf-sec {
+    max-width: 25%;
+} 
+div#standard-carousel .owl-next {
+    right: -23px;
+}
+div#standard-carousel .owl-prev {
+    left: -23px;
+}
+/**8-11-19**/
+.create-container #tab-button li a {
+    font-size: 15px;
+}
+}
+
+@media (min-width: 320px) and (max-width: 720px) {
+	
+	
+	.courses-details {
+		padding-bottom: 30px;
+	}
+	/*footer*/
+	.footer-menu li {
+    display: inline-block;
+    padding: 15px 5px 15px 5px;
+	}
+	
+	.footer-socialmenu span {
+		padding: 10px 0px 0px 0px;
+	}
+	.footer-copyright {
+    font: 14px/26px Gotham Book;
+    color: #000;
+    font-weight: bold;
+	}
+	/*End of Footer*/
+	/*register*/
+	.page-wrapper {
+		margin-top: 0px;
+	}
+	/*menu*/
+	div#navbarNavDropdown {
+		margin-top: 20px;
+		background-color: #fd6500
+	}
+	#navbarNavDropdown ul li a {
+		font: 16px/normal Gotham-Medium;
+		color: #fdfdfd !important;
+		padding: 15px 35px;
+	}
+	#navbarNavDropdown .navbar-nav {
+		display: -ms-flexbox;
+		display: flex;
+		-ms-flex-direction: column;
+		flex-direction: column;
+		padding-left: 0;
+		margin-bottom: 0;
+		list-style: none;
+		padding: 15px 0px 30px 0px;
+	}
+	
+	/* Edit Profile */
+	
+	.editprofile-wrapper {
+    margin: 0px 5%;
+    }
+	
+	.subscription-wrapper p {
+    font: 12px/15px Gotham Book;
+   }
+   .subscription-wrapper span {
+    font: 14px/5px Gotham-Medium;
+   }
+   .subscription-wrapper h3 {
+    font: 20px/6px Gotham-Medium;
+   }
+   
+ /*take-test*/
+ .question-section 
+ {
+    padding: 0px;
+ }
+ .question-section .options-section ul li 
+{
+	width: 100%;
+	margin-bottom:10px;
+}
+.question-section .options-section ul li:nth-of-type(1), .question-section .options-section ul li:nth-of-type(2)
+{
+	margin-bottom:10px;
+}
+.question-section .options-section ul li:nth-of-type(odd)
+{
+	margin-right:0px;
+}
+.test-overview .exam-details
+{
+	min-height:auto;
+	width:50%;
+	padding:6px 10px;
+}
+.test-overview .exam-details.questions, .test-overview .exam-details.completed, .test-overview .exam-details.total-time, .test-overview .exam-details.time-elapsed 
+{
+    width:50% !important;
+}
+.ques_ans_options li p
+{
+ padding:0px;
+}
+
+ /*take-test*/  
+   
+	
+}
+
+
+/* End of Device */
+
+@media (min-width: 320px) and (max-width: 480px) {
+	.home-slider .owl-nav .owl-prev {
+		left: -15px;
+		background: none;
+	}
+	.home-slider .owl-nav .owl-next {
+		right: -12px;
+		background: none;
+	}
+	/*Register*/
+	.register-signup .dob select {
+		display: inline-block;
+        width: 27.7% !important;
+        margin-right:15px;
+    }
+    .register-signup .dob .year{
+        margin-right:0px;
+    }
+	.register-innercontainer {
+		padding: 0px 15px;
+	}
+	.register-account {
+		padding: 15px 15px 20px 15px;
+	}
+	.register-btn {
+		padding: 30px 0px 0px 0px;
+        margin-bottom: 0px;
+	}
+	.register-wrapper {
+		width: 100%;
+		float: left;
+		padding: 15px 0px 0px 0px;
+	}
+	.signup-wrapper,
+	.register-account {
+		box-shadow: none;
+	}
+	/*footer */
+	/***************/
+	.footer-socialmenu {
+		padding: 14px 0px 10px 0px;
+		border-bottom: 2px solid #eee;
+	}
+	.footer-copyright {
+		padding: 10px 0px 0px 0px;
+	}
+	.footer-menu {
+		border-bottom: 2px solid #eee;
+		padding-bottom: 15px;
+	}
+	.footer-wrapper h4 {
+      padding-top: 30px;
+      font: 22px/14px Gotham Book;
+      }
+.download-img img {
+padding: 10px 0px 10px 0px;
+width: 120px;
+}
+.download-app {
+    padding-bottom: 14px;
+    border-bottom: 1px solid #e4e4e4;
+}
+	/*End of Footer */
+	
+/*faq*/
+ .alert-content.faq-page
+ {
+  padding:10px;
+ }
+ .alert-content.faq-page .myaccordion ul
+ {
+  padding-left:21px;
+ }
+
+ /*faq*/
+ /*take-test*/
+ .test-overview .exam-details
+{
+	width:100% !important;
+}
+.test-overview .exam-details h3
+{
+	font:22px/normal Gotham Book;
+}
+/**8-11-19**/
+.contact-btn {
+    margin-top: 5px; 
+}
+
+/*take-test*/	
+}
+
+
+/* End of Device */
+
+
+@media (min-width: 480px) and (max-width: 767px) {
+   
+/**dashboard**/
+.col-md-2.col-sm-12.pdf-sec {
+    width: 50%;
+}
+section.sub-courses .form-group {
+    width: 50%;
+}
+section.sub-courses {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.topic-section {
+    margin-top: 20px;
+}
+.notice-cont {
+    width: 50%;
+}
+.notice-cont {
+    border-right: 1px solid #696969;
+    border-bottom: 0px solid #696969;
+    padding: 10px 10px;
+    margin-bottom: 20px;
+}
+/**8-11-19**/
+.sec-wrapper {
+    width: 48%;
+    margin: 12px 8px 10px 0px;
+}
+.contact-btn {
+    margin-top: 5px; 
+}
+.alert-wrapper ul.nav.nav-tabs {
+    display: flex;
+}
+/**12-11-19**/
+.home-slider .owl-nav .owl-next {
+    right: -12px;
+}
+.home-slider .owl-nav .owl-prev {
+    left: -12px;
+}
+}
+/* End of Device */

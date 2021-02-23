@@ -1,0 +1,584 @@
+<?php defined('BASEPATH') OR exit('No direct script access allowed');
+
+class Surprise_questions extends Admin_Controller
+{
+	  	function __construct()
+  		{
+    		parent::__construct();
+    		$this->load->library(array('form_validation','csv_import'));
+			$this->load->language(array('flash_message','form_validation'), 'english');
+			$this->load->library('upload');	
+			$this->load->helper(array('thumb_helper','function_helper'));
+			if(!$this->session->has_userdata('admin_is_logged_in')){
+					redirect(SITE_ADMIN_URI);
+			}
+			getSearchDetails($this->router->fetch_class());
+			$this->load->model('base_model'); 
+			$this->load->model('certificate_model'); 
+			$this->load->model('surprise_model');
+		}
+
+		public function index($page_num = 1)
+		{  
+				
+				$search_course_keyword  = isset($_POST['search_course'])?trim($_POST['search_course']):(isset($_SESSION['search_course'])?$_SESSION['search_course']:'');							
+				$this->session->set_userdata('search_course', $search_course_keyword);
+				$keyword_course_session = $this->session->userdata('search_course');
+				if($keyword_course_session != '')
+				{
+					$keyword_course = $this->session->userdata('search_course');
+				}
+				else
+				{
+					isset($_SESSION['search_course'])?$this->session->unset_userdata('search_course'):'';
+					$keyword_course = "";
+				}					
+				$search_name_keyword  = isset($_POST['search_name'])?trim($_POST['search_name']):(isset($_SESSION['search_name'])?$_SESSION['search_name']:'');				
+				$this->session->set_userdata('search_name', $search_name_keyword);
+				$keyword_name_session = $this->session->userdata('search_name');
+				if($keyword_name_session != '')
+				{
+					$keyword_name = $this->session->userdata('search_name');
+				}
+				else
+				{
+					isset($_SESSION['search_name'])?$this->session->unset_userdata('search_name'):'';
+					$keyword_name = "";
+				}
+				
+				$search_test_keyword  = isset($_POST['search_test'])?trim($_POST['search_test']):(isset($_SESSION['search_test'])?$_SESSION['search_test']:'');
+				$this->session->set_userdata('search_test', $search_test_keyword); 				
+				$keyword_test_session = $this->session->userdata('search_test');
+				if($keyword_test_session != '')
+				{
+					$keyword_test = $this->session->userdata('search_test');
+				}
+				else
+				{
+					isset($_SESSION['search_test'])?$this->session->unset_userdata('search_test'):'';
+					$keyword_test = "";
+				}	
+				$this->load->library('pagination');
+				$config  = $this->config->item('pagination');
+			  	$config["base_url"]    = base_url().SITE_ADMIN_URI."/surprise_questions/index";
+			 	$data["per_page"] = $config["per_page"] = $this->config->item('admin_list', 'page_per_limit'); 
+			  	$config["uri_segment"] = 4;
+			  	$data['limit_end'] = $limit_end = ($page_num - 1) * $config['per_page'];  
+			  	$limit_start = $config['per_page'];
+			  	$join_tables = $where = array(); 
+			  	if($keyword_name)
+				{
+					$where[] = array( TRUE, 'c.question LIKE ', '%'.$keyword_name.'%' );
+					$where[] = array( TRUE, 'c.question_type', 1);
+					$data['keyword_name'] = $keyword_name;
+				}
+				else{
+					$data['keyword_name'] = "";
+				} 
+				if($keyword_course)
+				{
+					$test_list = $this->surprise_model->getTests($keyword_course);
+					$data['test_name'] = $this->make_select($test_list, "Select Test");
+					$where[] = array( TRUE, 'c.course_id', $keyword_course);
+					$data['keyword_course'] = $keyword_course;
+				}
+				else{
+					$data['keyword_course'] = "";
+				}
+				if($keyword_test)
+				{
+					$where[] = array( TRUE, 'c.test_id', $keyword_test);
+					$data['keyword_test'] = $keyword_test;
+				}
+				else{
+					$data['keyword_test'] = "";
+				}
+			  	$fields = 'c.id, c.question, c.question_type, c.status, c.created, co.name course_name, st.test_name, COUNT(td.question_id) as is_delete,sub.name as subject_name'; 
+			  	$join_tables[] = array('subjects as sub','c.subject_id = sub.id','LEFT');
+			  	$join_tables[] = array('courses as co','c.course_id = co.id');
+			  	$join_tables[] = array('surprise_test as st','c.test_id = st.id');
+			  	$join_tables[] = array('test_details as td','td.question_id = c.id AND td.test_type=2',"left");
+			  	$where[] = array("TRUE",'st.status','1');
+			  	$where[] = array("TRUE",'co.status','1');
+			  	$group_by = array('c.test_id','c.subject_id');
+
+			  	$data['total_rows'] = $config['total_rows'] = $this->base_model->get_advance_list('surprise_questions as c', $join_tables, $fields, $where, 'num_rows','','','c.id');
+			  	$data['surprise_questions'] = $this->base_model->get_advance_list('surprise_questions as c', $join_tables, $fields, $where, '', 'c.id', 'desc',$group_by, $limit_start, $limit_end);
+			  	$this->pagination->initialize($config);
+			    $data['get_course'] = $this->base_model->getSelectList('courses');
+			    $fields = "id,test_name";
+			    $data['main_content'] = 'surprise_questions/index';
+			    $data['page_title']  = 'Surprise Test'; 
+			    $this->load->view(ADMIN_LAYOUT_PATH, $data); 	
+		}
+		public function reset()
+		{
+			$this->session->unset_userdata('search_name');
+			$this->session->unset_userdata('search_course');
+			$this->session->unset_userdata('search_test');
+			redirect(base_url().SITE_ADMIN_URI.'/surprise_questions/');
+		}
+		public function validate_select($val, $fieldname){
+			if($val==""){
+				$this->form_validation->set_message('validate_select', 'Please choose the '.$fieldname.'.');
+				return FALSE;
+			}			
+		}
+		public function add()
+		{
+			$data['post'] = FALSE;
+			if ($this->input->server('REQUEST_METHOD') === 'POST'){ 
+				$this->form_validation->set_rules('test_name', 'test name','trim|callback_validate_select[Test Name]');
+				$this->form_validation->set_rules('subject_id', 'subject id','trim|callback_validate_select[subject]');
+				
+				$this->form_validation->set_rules('tags[]', 'Question Tags','trim|required');
+				$this->form_validation->set_rules('selected_qn[]', 'Questions','trim|required');
+
+
+				if ($this->form_validation->run()){ 
+					$date = date('Y-m-d H:i:s');
+					$update_array = array();
+
+						$mapped_qns_id = $this->input->post('selected_qn[]');
+         				 	foreach($mapped_qns_id as $key => $value){
+         				 		$update_array = array(); 
+         				 		$where =array();
+								$where[] = array( TRUE, 'c.id', $value);
+								$qns_data = $this->base_model->get_advance_list('questions_master as c', '', '', $where, 'row', '', '');
+									
+								$questions_master_id = $qns_data->id; 
+								$question_type = $qns_data->question_type;
+								$answer_type = $qns_data->answer_type;	
+								$choice_count = $qns_data->choice_count;
+								$question = $qns_data->question;
+								$choices = $qns_data->choices;
+								$correct_answer = $qns_data->correct_answer;
+								$explanation_type = $qns_data->explanation_type;
+								$explanation = $qns_data->explanation;
+								$severity = $qns_data->severity;
+								$show_options = $qns_data->show_options;
+								$where1 = array();
+								$where1[] = array( TRUE, 'qns.subject_id',$this->input->post('subject_id'));
+								$where1[] = array( TRUE, 'qns.course_id',$this->input->post('course_list'));
+								$where1[] = array( TRUE, 'qns.test_id',$this->input->post('test_name'));
+
+								$where1[] = array( TRUE, 'qns.questions_master_id', $questions_master_id);
+
+								$already_check = $this->base_model->get_advance_list('surprise_questions as qns', '', '', $where1, 'row', '', '');
+								if(count($already_check)==0){
+					 				$update_array =	array(
+					 							   'course_id' => $this->input->post('course_list'), 
+					 							   'test_id' => $this->input->post('test_name'), 
+					 							   'subject_id' => $this->input->post('subject_id'), 
+												   'status' => ($this->input->post('status')) ? $this->input->post('status') : 0,
+												   'created' => $date,
+													    'questions_master_id' => $questions_master_id,
+														'question_type' => $question_type,
+														'answer_type' => $answer_type,
+														'choice_count' => $choice_count,
+														'question' => $question,
+														'choices' => $choices,
+														'correct_answer' => $correct_answer,
+														'explanation_type' => $explanation_type,
+														'explanation' => $explanation,
+														'severity' => $severity,
+														'show_options' => $show_options
+												   );
+					 			$insertId = $this->base_model->insert('surprise_questions', $update_array);
+					 			}
+					 		}
+						$this->session->set_flashdata('flash_message', $this->lang->line('add_record'));
+						redirect(base_url().SITE_ADMIN_URI.'/surprise_questions/');
+					
+				}
+				$data['post'] = TRUE;
+			}
+			$data['course_list'] = $this->base_model->getSelectList('courses');
+			$fields = "id,test_name";
+			$data['test_name'] = $this->base_model->getSelectList('surprise_test','','',$fields);
+			$data['tags']=$this->base_model->get_tags();
+			$data['subject_id'] = $this->base_model->getSelectList('subjects');
+			$data['main_content'] = 'surprise_questions/add';
+			$data['page_title']  = 'Surprise Questions'; 
+			$this->load->view(ADMIN_LAYOUT_PATH, $data); 	
+		}
+		public function edit($id = NULL)
+		{
+			$data['post'] = FALSE;
+			$this->load->helper('thumb_helper');
+			$this->load->helper('html');
+			if ($this->input->server('REQUEST_METHOD') === 'POST'){ 
+				$this->form_validation->set_rules('course_list', 'course list','trim|callback_validate_select[Course]');
+				$this->form_validation->set_rules('test_name', 'test name','trim|callback_validate_select[Test Name]');
+				$this->form_validation->set_rules('subject_id', 'subject id','trim|callback_validate_select[subject]');
+				$this->form_validation->set_rules('selected_qn[]', 'Questions','trim|required');
+
+				if ($this->form_validation->run())
+				{  
+					$row = $this->base_model->getCommonListFields('surprise_questions','',array('id' => $id));  
+				
+					$upload_name1 = array();
+					$date = date('Y-m-d H:i:s');
+						$update_array=array();
+					//customize here
+					   $course_id = $this->input->post('course_list');
+					   $test_id = $this->input->post('test_name');
+					   $class_id = $this->input->post('class_list');
+					   $chapter_id = $this->input->post('chapter_list');
+						$this->base_model->delete('surprise_questions',array('course_id' => $course_id, 'test_id' => $test_id));
+						$mapped_qns_id = $this->input->post('selected_qn[]');
+         				 	foreach($mapped_qns_id as $key => $value){
+         				 		$update_array = array(); 
+         				 		$where =array();
+								$where[] = array( TRUE, 'c.id', $value);
+								$qns_data = $this->base_model->get_advance_list('questions_master as c', '', '', $where, 'row', '', '');
+								$questions_master_id = $qns_data->id; 
+								$question_type = $qns_data->question_type;
+								$answer_type = $qns_data->answer_type;	
+								$choice_count = $qns_data->choice_count;
+								$question = $qns_data->question;
+								$choices = $qns_data->choices;
+								$correct_answer = $qns_data->correct_answer;
+								$explanation_type = $qns_data->explanation_type;
+								$explanation = $qns_data->explanation;
+								$severity = $qns_data->severity;
+								$show_options = $qns_data->show_options;
+								// $where1 = array();
+								// $where1[] = array( TRUE, 'qns.course_id',$this->input->post('course_id'));
+								// $where1[] = array( TRUE, 'qns.subject_id',$this->input->post('subject_id'));
+								// $where1[] = array( TRUE, 'qns.class_id', $this->input->post('class_id'));
+								// $where1[] = array( TRUE, 'qns.chapter_id', $this->input->post('chapter_id'));
+								// $where1[] = array( TRUE, 'qns.questions_master_id', $questions_master_id);
+
+								// $already_check = $this->base_model->get_advance_list('surprise_questions as qns', '', '', $where1, 'row', '', '');
+								// if(!$already_check){ // no need to check bcoz deleteing and inserting
+					 				$update_array =	array(
+					 							   'course_id' => $this->input->post('course_list'), 
+					 							   'test_id' => $this->input->post('test_name'), 
+					 							   'subject_id' => $this->input->post('subject_id'),
+												   'status' => ($this->input->post('status')) ? $this->input->post('status') : 0,
+												   'created' => $date,
+													    'questions_master_id' => $questions_master_id,
+														'question_type' => $question_type,
+														'answer_type' => $answer_type,
+														'choice_count' => $choice_count,
+														'question' => $question,
+														'choices' => $choices,
+														'correct_answer' => $correct_answer,
+														'explanation_type' => $explanation_type,
+														'explanation' => $explanation,
+														'severity' => $severity,
+														'show_options' => $show_options
+												   );
+					 			$insertId = $this->base_model->insert('surprise_questions', $update_array);
+					 			// }
+					 		}
+						//customize here end
+
+					
+						//$this->base_model->update ( 'surprise_questions', $update_array, array('id'=>$id));
+						$this->session->set_flashdata('flash_message', $this->lang->line('add_record'));
+						redirect(base_url().SITE_ADMIN_URI.'/surprise_questions/');						 	
+					 
+				}
+				$data['post'] = TRUE;
+			  	
+		 	}
+		 	$join_tables = $where = array();  
+		  	$fields = 'c.choice_count'; 
+		  	$where[] = array( TRUE, 'c.id', $id);
+		  	$count = $this->base_model->get_advance_list('surprise_questions as c', $join_tables, $fields, $where, '', '', '');
+		 	
+		 	$data['count'] = $count[0]['choice_count'];
+		    $data['course_list'] = $this->base_model->getSelectList('courses');
+			$data['surprise_questions_main'] = $this->base_model->getCommonListFields('surprise_questions','',array('id' => $id));
+			$fields = "id,test_name";
+			$data['test_name'] = $this->base_model->getSelectList('surprise_test','','',$fields);
+			$data['surprise_questions'] = $data['surprise_questions_main'][0];
+			$data['subject_id'] = $this->base_model->getSelectList('subjects');
+
+			$qns_details = $data['surprise_questions_main'][0];
+
+
+			// get surprise question count from test details table
+			$fields = 'COUNT(td.question_id) as is_delete'; 
+			$where[] = array( TRUE, 'c.id', $id);
+			$join_tables[] = array('test_details as td','td.question_id = c.id AND td.test_type=2',"left");	
+			$data['test_details'] = $this->base_model->get_advance_list('surprise_questions as c', $join_tables, $fields, $where, 'row', '', '');
+
+
+			$data['tags']=$this->base_model->get_tags();
+			$data['mapped_questions'] = $this->certificate_model->getQuestionsSelectedStd($qns_details->course_id, $qns_details->test_id);
+
+
+
+			$data['main_content'] = 'surprise_questions/edit';
+		  	$data['page_title']  = 'Surprise Questions'; 
+		  	$this->load->view(ADMIN_LAYOUT_PATH, $data); 	
+	}
+
+	public function delete($id,$pageredirect=null,$pageno) 
+	{
+		// $test_details = check_delete($id,1);
+		// if($test_details["is_delete"]==0){
+		// $getImg = $this->base_model->getCommonListFields('surprise_questions',array('question_type', 'question', 'answer_type','choices', 'explanation_type', 'explanation'),array('id' => $id));
+		// if($getImg['0']->question_type == '2'){
+		// 	@unlink($this->config->item('surprise_question_img') . $getImg['0']->question);
+		//    @unlink($this->config->item('surprise_question_img') .'thumb_questions_img/'. $getImg['0']->question);
+  //     }
+		
+		// if($getImg['0']->explanation_type == '2'){
+		// 	@unlink($this->config->item('surprise_explanation_img') . $getImg['0']->explanation);
+		//    @unlink($this->config->item('surprise_explanation_img') .'thumb_explanation_img/'. $getImg['0']->explanation);
+  //    	}
+     	
+		// if($getImg['0']->answer_type == '2'){
+		// 	$choices = unserialize($getImg['0']->choices);
+		// 	foreach($choices as $choice) {
+		//         @unlink($this->config->item('surprise_answer_img') . 'thumb_answers_img/'. $choice);
+		//     }
+  //       }
+
+		 $where = array();
+        $where[] = array( TRUE, 'qns.id', $id);
+		$qns_data = $this->base_model->get_advance_list('surprise_questions as qns', '', '', $where, 'row', '', '');
+
+		$course_id = $qns_data->course_id;
+		$test_id = $qns_data->test_id;
+		
+		$this->base_model->delete('surprise_questions',array('course_id' => $course_id, 'test_id' => $test_id));
+
+		$this->session->set_flashdata('flash_message', $this->lang->line('delete_record') );
+		redirect(base_url().SITE_ADMIN_URI.'/surprise_questions/'.$pageredirect.'/'.$pageno.'/'.$fieldsorts.'/'.$typesorts);
+		// }
+		// else
+		// {
+		// 	redirect(base_url().SITE_ADMIN_URI.'/surprise_questions/'.$pageredirect.'/'.$pageno.'/'.$fieldsorts.'/'.$typesorts);
+		// }
+	}
+	
+	
+	function update_status($id,$status,$pageredirect,$pageno)
+	{
+		$test_details = check_delete($id,1);
+		if($test_details["is_delete"]==0){
+			$table_name = 'surprise_questions';
+			change_status($table_name,$id,$status,$pageredirect,$pageno);
+			$this->session->set_flashdata('flash_message', $this->lang->line('update_record'));
+			redirect(base_url().SITE_ADMIN_URI.'/surprise_questions/'.$pageredirect.'/'.$pageno.'/'.$fieldsorts.'/'.$typesorts);
+		}else{
+			redirect(base_url().SITE_ADMIN_URI.'/surprise_questions/'.$pageredirect.'/'.$pageno.'/'.$fieldsorts.'/'.$typesorts);
+		}
+	}
+	function bulkactions($pageredirect=null,$pageno){
+		
+		$fieldsorts = $this->input->get('sortingfied');
+		$typesorts = $this->input->get('sortype');
+		$bulk_type= $this->input->post('more_action_id');
+		$bulk_ids= $this->input->post('checkall_box');
+		if($bulk_type == 1){
+			foreach($bulk_ids as $id) {
+				$data = array('status' => '1');
+				$this->base_model->update_status($id, $data, 'surprise_questions');
+			}
+			$this->session->set_flashdata('flash_message', $this->lang->line('bulk_enabled') );
+		}
+		else if($bulk_type == 2){
+			foreach($bulk_ids as $id) {
+				$test_details = check_delete($id,1);
+				if($test_details["is_delete"]==0){
+					$data = array('status' => '0');
+					$this->base_model->update_status($id, $data, 'surprise_questions');
+				}else{
+					redirect(base_url().SITE_ADMIN_URI.'/surprise_questions/'.$pageredirect.'/'.$pageno.'/'.$fieldsorts.'/'.$typesorts);
+				}
+			}
+			$this->session->set_flashdata('flash_message', $this->lang->line('bulk_disabled') );
+		}
+		else if($bulk_type == 3)
+		{
+			foreach($bulk_ids as $id) 
+			{
+				$test_details = check_delete($id,1);
+				if($test_details["is_delete"]==0){
+					$getImg = $this->base_model->getCommonListFields('surprise_questions',array('question_type','choices'),array('id' => $id));
+					if($getImg['0']->question_type == '2'){
+						$choices = unserialize($getImg['0']->choices);
+						foreach($choices as $choice) {
+							@unlink($this->config->item('surprise_img') . $choice);
+						}
+					}
+					$this->base_model->delete('surprise_questions', array('id' => $id));
+				}else{
+					redirect(base_url().SITE_ADMIN_URI.'/surprise_questions/'.$pageredirect.'/'.$pageno.'/'.$fieldsorts.'/'.$typesorts);
+				}
+			}
+			$this->session->set_flashdata('flash_message', $this->lang->line('bulk_deleted') );
+		}
+		else {
+			$this->session->set_flashdata('flash_message', $this->lang->line('edit_error') );
+			redirect(base_url().SITE_ADMIN_URI.'/surprise_questions/'.$pageredirect.'/'.$pageno.'/'.$fieldsorts.'/'.$typesorts);
+		}
+		redirect(base_url().SITE_ADMIN_URI.'/surprise_questions/'.$pageredirect.'/'.$pageno.'/'.$fieldsorts.'/'.$typesorts);
+	}
+	
+	public function import(){
+		$data['post'] = FALSE;
+		if ($this->input->server('REQUEST_METHOD') === 'POST'){ 
+			$this->form_validation->set_rules('course_list', 'Course','trim|callback_validate_select[Course]');
+			$this->form_validation->set_rules('test_name', 'Test Name','trim|callback_validate_select[Test Name]');
+			if ($this->form_validation->run()){ 
+				$this->load->library('upload');
+				$file_path = $this->config->item( 'tmp_csv_path', 'file_path').time().'/';
+				$config = array('upload_path'=>$file_path, 'allowed_types'=> 'csv');
+				CreateDirectory($config['upload_path']);
+				$this->upload->initialize($config);
+				if ( $this->upload->do_upload('questions_csv')) {
+					$upload_data = $this->upload->data();
+					$file_name = $file_path.$upload_data['file_name']; 
+					if ($csv_array = $this->csv_import->get_array($file_name)) { 
+						$csv_header_array = array('Question Type','Question','Answer Type','Option A','Option B','Option C','Option D','Option E','Correct Answer','Explanation Type','Explanation','Severity'); 
+						if( Check_valid_csv_header($csv_array['header_data'], $csv_header_array) ) {	  					 		
+							$date = date('Y-m-d H:i:s'); 
+							$insert_data = array(); 
+							$count = 0; $subcount = 0; $subject_id = 0; $class_id = 0; $qtype = 0;
+							foreach ($csv_array['row_data'] as $row) {
+								if($row['Question Type'] != ""  && $row['Question'] != ""  && $row['Answer Type'] != ""  && $row['Option A'] != "" && $row['Option B'] != ""
+								&& $row['Correct Answer'] != "" && $row['Explanation Type'] != "" && $row['Explanation'] != ""){
+									$test_name=$this->input->post('test_name');
+									$quescount = $this->base_model->getCount('surprise_questions',array('test_id'=>$test_name,'question' => $row['Question'], 'course_id' => $this->input->post('course_list')));
+									$severity = 0;
+									if ($quescount == 0) {
+										$severity = array_search($row['Severity'], $this->config->item('severity'));
+										$alphabets = array('A','B','C','D','E');
+										$choice_array = array();
+										foreach($alphabets as $alpha){
+											if($row['Option '.$alpha] != null){
+												$choice_array[$alpha] = $row['Option '.$alpha];
+											}
+										}
+									
+										if(strtolower($row['Question Type'])=="text"){
+											$qtype = 1;
+										}
+										else{
+											$qtype = 2;
+										}
+										if(strtolower($row['Answer Type']) == "text"){
+											$atype = 1;
+										}
+										else{
+											$atype = 2;
+										}
+										if(strtolower($row['Explanation Type']) == "text"){
+											$etype = 1;
+										}
+										else{
+											$etype = 2;
+										}
+										$insertdata = array('created' => $date,
+															'modified' => $date,
+															'course_id' => $this->input->post('course_list'),
+															'test_id' => $test_name,														
+															'question_type' => $qtype,
+															'question' => $row['Question'], 
+															'answer_type'=>$atype,
+															'choice_count' => count($choice_array),
+															'choices' => serialize($choice_array),
+															'correct_answer' => $row['Correct Answer'],
+															'explanation_type'=>$etype,
+															'explanation' => $row['Explanation'],
+															'severity' => $severity, 
+															'show_options' => $show_options,
+															'status' => '1'														
+															);
+									
+									 	$ques_id = $this->base_model->insert('surprise_questions', $insertdata);
+									}else{
+										
+									}
+								}
+							} 
+							RemoveDirectory($file_path);
+							$this->session->set_flashdata('flash_success_message', $this->lang->line('upload_csv_success'));
+							redirect(base_url().SITE_ADMIN_URI.'/surprise_questions/');
+						}else{
+							$this->session->set_flashdata('flash_failure_message', $this->lang->line('upload_csv_mismatch_row'));
+						}
+					} else {
+						$this->session->set_flashdata('flash_failure_message', $this->lang->line('upload_csv_failure'));
+					}
+				}else{
+					$data['error'] = $this->upload->display_errors();
+					$this->session->set_flashdata('flash_failure_message', $this->upload->display_errors());
+				}
+				RemoveDirectory($file_path);
+			}
+			$course_id = $this->input->post("course_list");
+			if($course_id!=""){
+				$fields = "id,test_name";
+				$where[] = array( TRUE, 'course_id', $course_id); 				
+				$tests = $this->base_model->get_advance_list('surprise_test', '', $fields, $where, '', 'id', 'asc');
+				$list = array(""=>"select");
+				foreach($tests as $test){
+					$list[$test["id"]] = $test["test_name"];
+				}
+				$data['test_name'] = $list;			
+			}else{
+				$test = array(""=>"Select");			
+				$data['test_name'] = $test;
+			}	
+			$data['course_list'] = $this->base_model->getSelectList('courses');
+			$data['main_content'] = 'surprise_questions/import';
+			$data['page_title']  = 'Surprise Questions'; 
+			$this->load->view(ADMIN_LAYOUT_PATH, $data); 
+		}else{
+			$test = array(""=>"Select");			
+			$data['test_name'] = $test;
+			$data['post'] = TRUE;
+			$data['course_list'] = $this->base_model->getSelectList('courses');
+			$data['main_content'] = 'surprise_questions/import';
+			$data['page_title']  = 'Surprise Questions'; 
+			$this->load->view(ADMIN_LAYOUT_PATH, $data); 	
+		}
+		
+	}
+	public function correct_answer(){
+		$count = $this->input->post('count');
+		$data = array();
+		if($count == 2){
+			$data['correct_answer'] = array('A'=>'A','B'=>'B');
+		}
+		else if($count == 3)
+		{
+			$data['correct_answer'] = array('A'=>'A','B'=>'B','C'=>'C');
+		}
+		else if($count == 4)
+		{
+			$data['correct_answer'] = array('A'=>'A','B'=>'B','C'=>'C','D'=>'D');
+		}
+		else
+		{
+			$data['correct_answer'] = array('A'=>'A','B'=>'B','C'=>'C','D'=>'D','E'=>'E');
+		}
+		echo json_encode($data);
+	}
+	public function request(){
+		$data['test_list'] = array();
+		$course_id = $this->input->post('course_id');
+		$test_list = $this->surprise_model->getTests($course_id);	 		  	
+	  	if($test_list){
+			foreach($test_list as $test){
+		  		$data['test_list'][ucfirst($test['name'])] = $test['id'];
+		  	}
+	  	}		  		  			  	
+		echo json_encode($data);
+	}
+	public function make_select($select_values, $default){
+		$return_values[""] = $default;
+		foreach($select_values as $select_value){
+			$return_values[$select_value["id"]] = $select_value["name"];
+		}
+		return $return_values;	
+	}
+}

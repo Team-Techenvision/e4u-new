@@ -1,0 +1,21 @@
+<div class="alerts-section-main">
+	<div class="wrapper">
+		<?php 
+			if(count($alerts_list)>0){			
+				foreach($alerts_list as $alert){ ?>
+					<div class="alert-list">
+						<h2><a href="#"><?php echo $alert['title'];?></a></h2>					
+						<div class="post-date"><span><i class="date-icon dashboard-sprite"></i><?php echo date('H A', strtotime($alert['created']));?> |</span> Posted Date: <span><?php echo date('M dS, Y', strtotime($alert['created']));?></span></div>
+						<p><?php echo $alert['short_description'];?></p>
+						<a href="#" title="Read More" class="readmore">Read More</a>
+					</div>				
+		<?php	}
+			}else{?>
+				<div class="alert-list">
+					<p>No alerts found</p>
+				</div>
+		<?php
+			}
+		?>
+	</div>
+</div>

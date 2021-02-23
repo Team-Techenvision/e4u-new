@@ -1,0 +1,221 @@
+.selectricWrapper {
+	position: relative;
+	margin:0px;
+	width: 300px;
+	cursor: pointer;
+}
+.selectricResponsive {
+	width: 100%;
+}
+.selectric{
+	border: 1px solid #ccc;
+	background: #fff;
+	position: relative;
+	border-radius:6px;
+}
+.selectric .label{
+	display: block;
+	white-space: nowrap;
+	overflow: hidden;
+	margin: 0 30px 0 0;
+	padding: 6px 15px;
+	color:#858585;
+	font:16px/32px 'GothamNarrow-Book',Arial;
+	min-height:32px;
+}
+.selectric .button {
+	display: block;
+	position: absolute;
+	right: 0;
+	top: 19px;
+	width:25px;
+	height:20px;
+	text-indent:-9999px;
+	background:url('../images/icons.png') no-repeat 0 0;
+}
+.selectricOpen .button{
+	background-position:0 -30px;
+}
+.selectricHover .selectric {
+	border-color: #cccc;
+}
+.selectricHover .selectric .button {
+	color: #888;
+}
+.selectricHover .selectric .button:after {
+	border-top-color: #888;
+}
+.selectricOpen {
+	z-index: 99;
+}
+.selectricOpen .selectric {
+	border-color: #c9c9c9;
+	background: #fff;
+}
+.selectricOpen .selectricItems {
+	display: block;
+}
+.selectricDisabled {
+	filter: alpha(opacity=50);
+	opacity: 0.5;
+	cursor: default;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	 -moz-user-select: none;
+	  -ms-user-select: none;
+		  user-select: none;
+}
+.selectricHideSelect {
+	position: relative;
+	overflow: hidden;
+	width: 0;
+	height: 0;
+}
+.selectricHideSelect select {
+	position: absolute;
+	left: -100%;
+	display: none;
+}
+.selectricInput {
+	position: absolute !important;
+	top: 0 !important;
+	left: 0 !important;
+	overflow: hidden !important;
+	clip: rect(0, 0, 0, 0) !important;
+	margin: 0 !important;
+	padding: 0 !important;
+	width: 1px !important;
+	height: 1px !important;
+	outline: none !important;
+	border: none !important;
+	*font: 0/0 a !important;
+	background: none !important;
+}
+.selectricTempShow {
+	position: absolute !important;
+	visibility: hidden !important;
+	display: block !important;
+}
+/* Items box */
+.selectricItems {
+	display: none;
+	position: absolute;
+	top: 100%;
+	left: 0;
+	background: #fff;
+	border:1px solid #ccc;
+	border-radius:6px;
+	z-index: -1;
+}
+.selectricItems .selectricScroll {
+	height: 100%;
+	overflow: auto;
+	-webkit-overflow-scrolling: touch;
+}
+.selectricAbove .selectricItems {
+	top: auto;
+	bottom: 100%;
+}
+.selectricItems ul, .selectricItems li {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	font-size: 12px;
+	line-height: 20px;
+	min-height: 20px;
+}
+.selectricItems li {
+	display: block;
+	padding:7px 15px;
+	border:0;
+	color: #858585;
+	cursor: pointer;
+	font: 16px "GothamNarrow-Book",arial;
+	text-align:left;
+	border-top:1px solid #f0f0f0;
+}
+.selectricItems li:first-child{
+	border-top:none;
+}
+.selectricItems li.selected {
+	font-family:'GothamNarrow-Book',Arial;
+	background:#f2f2f2;
+}
+.selectricItems li:hover {
+	color: #444;
+	background:#f2f2f2;
+}
+.selectricItems li.disabled {
+	background: #F5F5F5;
+	color: #BBB;
+	border-top-color: #FAFAFA;
+	cursor: default;
+}
+/* Custom css*/
+.course_form .select-box {
+  float: left;
+  margin-right: 29px;
+  width: 360px;
+}
+.course_form .selectricWrapper{
+	width:100%;
+}
+.course_form  .selectric{
+	border:1px solid #fff;
+	border-radius:35px;
+	background:rgba(0,0,0,0.2);
+}
+.course_form .selectric .label {
+  color: #fff;
+  font-size: 18px;
+  margin: 0;
+  padding: 12px 50px 12px 30px;
+}
+.course_form .selectric .button{
+	height: 15px;
+	right: 20px;
+	text-indent: -9999px;
+	top: 22px;
+	width: 15px;
+}
+.course_form  .selectricItems{
+	background:rgba(0,0,0,0.4);
+	border-color:#fff;
+}
+.course_form .selectricItems li {
+  padding: 12px 30px;
+  color:#fff;
+  border-top:1px solid #fff;
+}
+.course_form .selectricItems li:first-child{
+	border-top:none;
+}
+.course_form  .selectricItems li.selected,
+.course_form  .selectricItems li:hover{
+	background:rgba(0,0,0,0.5);
+}
+
+.practice_level .selectricWrapper{
+	min-width:145px;
+	width:auto;
+}
+.practice_level .selectric {
+  border: 2px solid #2a3f61;
+  border-radius: 30px;
+}
+.practice_level .selectric .label {
+  color: #2a3f61;
+  font: 18px/32px "GothamNarrow-Medium";
+  padding: 5px 20px;
+  text-transform: uppercase;
+}
+.practice_level .selectric .button {
+  background-position: -3px -531px;
+  height: 7px;
+  right: 20px;
+  top: 19px;
+  width: 8px;
+}
+.practice_level .selectricOpen .button{
+	 background-position:-3px -562px;
+}

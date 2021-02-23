@@ -1,0 +1,28 @@
+<?php
+
+	function surprise_test() 
+	{
+		$CI =& get_instance();
+		if($CI->session->has_userdata('user_is_logged_in'))
+		{ 
+			$CI->load->model('tests/tests_model');
+			$CI->load->model('dashboard/dashboard_model');
+			$user_arr=$CI->session->userdata('user_is_logged_in');
+			$course = $CI->dashboard_model->get_paid_course($user_arr["user_id"]);
+			$data = array();
+			if($course==null)
+			{
+				 return 0;
+			}
+			// foreach($course as $key=>$value)
+			// {
+			// 	$data[] = $value['id'];
+			// }
+			$surprise_test = $CI->tests_model->surprise_menu($course['id'],$user_arr["user_id"]);
+		}
+		return $surprise_test;
+	}
+	
+	
+
+
