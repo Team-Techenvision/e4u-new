@@ -123,6 +123,7 @@ $('#forgot_form').on('submit',function(e){
       DataType:"JSON",
       success: function(result){
         $("#preloader1").hide();
+        // alert(result);
         if(result != ''){
                       $(".frgt_email").html('');
                       result=$.trim(result);
@@ -134,6 +135,7 @@ $('#forgot_form').on('submit',function(e){
                    }
                    else{
                     if(email_sent == 1){
+                      $("#forgot_form")[0].reset();
                       $('.frgt_email').html('<p style="text-align:center;margin-bottom:10px;font-weight:bold;color:green">Reset Link is sent to your registered email id.Please click on the link to reset your password.</p>')
                    }
                    else{

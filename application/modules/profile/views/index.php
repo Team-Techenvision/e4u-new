@@ -152,15 +152,33 @@
                             <label class="change">You can change class only once</label>
                         </div>
                      </div>
-                     <div class="form-row">
+                     <div class="form-row justify-content-between">
                         <div class="form-group col-md-5">
                            <label for="inputEmail4">Contact Address <span class="required">*</span></label>          
                              <?php $address = isset($_POST['address'])?$_POST['address']: (isset($users[0]['address']) ? $users[0]['address'] : '');?>               
-						     <textarea class="form-control"  name="address" id="exampleFormControlTextarea1" rows="3"
-                                    placeholder=""><?php echo $address;?></textarea>
-                                    <?php if(form_error('address')) echo form_label(form_error('address'), 'address', array("id"=>"address-error" , "class"=>"error-msg"));?>
-                                    <span class="error-msg"> </span>
+						            <textarea class="form-control"  name="address" id="exampleFormControlTextarea1" rows="3"
+                                 placeholder=""><?php echo $address;?></textarea>
+                                 <?php if(form_error('address')) echo form_label(form_error('address'), 'address', array("id"=>"address-error" , "class"=>"error-msg"));?>
+                                 <span class="error-msg"> </span>
                         </div>
+                        <?php $data_update=$this->session->userdata('user_is_logged_in');
+                                 $id= $data_update["user_id"];  ?>
+                        <div class="form-group col-md-5">
+                           <label for="inputEmail4">Subcription Details </label>                 
+						             
+                                 <?php 
+                                 $query = $this->db->query("SELECT DISTINCT(courses.name) FROM `user_plans` INNER JOIN courses ON (courses.id=user_plans.course_id) WHERE user_id=$id");
+                                 $row = $query->result();
+                                 foreach($row  as $r)
+                                 { ?>
+                                    <input type="text" value="<?php echo $r->name; ?>" class="form-control" readonly> 
+                                <?php  }
+                                 
+                                  ?>
+                               
+                                 
+                        </div>
+                       
                      </div>
 					 
 					    <div class="form-row">

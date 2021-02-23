@@ -80,7 +80,7 @@
 									<div class="form-group col-md-3">
 										<div class="select-courses">
 										<?php 
-											$js = 'id="subjects" class="form-control"';
+											$js = 'id="subjects" class="form-control" required';
 											echo form_dropdown('subjects',$subjects, set_value('subjects'), $js);
 										?>
 										</div>
@@ -88,7 +88,7 @@
 									<div class="form-group col-md-3">
 										<div class="select-courses ">
 										<?php 
-											$js = 'id="chapters" class="form-control"';
+											$js = 'id="chapters" class="form-control" required';
 											echo form_dropdown('chapters',$chapters, set_value('chapters'), $js);
 										?>
 										</div>
@@ -96,7 +96,7 @@
 									<div class="form-group col-md-3">
 										<div class="select-courses">
 										<?php 
-											$js = 'id="severity" class="form-control"';
+											$js = 'id="severity" class="form-control" required';
 											echo form_dropdown('severity', $this->config->item('severity_front_end'), set_value('severity'), $js);
 										?>
 										</div>
@@ -148,6 +148,8 @@
 	<?php $this->load->view('dashboard/modal');?>
 <script>
 	$(document).ready(function(){
+
+		$("#subjects").prepend("<option value='' selected>Select Chapter</option>");
   
 		$(document).on('click','#open_material', function(){
 		  if($(this).hasClass( "show" ) == false){
@@ -203,7 +205,9 @@
 	            success: function (result) { 
 	                if(result != ''){
 	                	$('.study_materials').html($.trim(result));	
+						
 	                }
+					
 	            }
 	        });
      }
@@ -291,10 +295,19 @@ $(document).on('click','.view_attachment', function(){
 	}
 	$('#practice_test').click(function(){
 		var subject_id = $("#subjects").val();
-		var chapter_id = $("#chapters").val();
 		var severity = $("#severity").val();
+		var chapter_id = $("#chapters").val();
+		// alert(chapter_id);
+		if(chapter_id != "0" &&  chapter_id !=""){
+			location.href = base_url+"tests/start_test/"+subject_id+"/"+chapter_id+"/"+severity;
+		}
+		else{
+			alert("Please Select Chapter");
+		}
+		// 
+		// var chapter_id = $("#chapters").val();		
 		// alert(subject_id);alert(chapter_id);alert(severity);
-		location.href = base_url+"tests/start_test/"+subject_id+"/"+chapter_id+"/"+severity;
+		// 
 	});
 </script>
 

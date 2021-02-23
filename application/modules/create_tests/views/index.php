@@ -154,9 +154,15 @@ $('#standard-carousel').owlCarousel({
                 $('.subject'+key).find('.fa-plus').removeClass("fa-plus").addClass("fa-check");
               }
               else{
+                 
+                // alert(ischecked);
                 alert('You can select maximum of 3 subjects only.');
-                $(this).prop( "checked", false );
-                $('.subject'+key).find('.fa-check').removeClass("fa-check").addClass("fa-plus");
+                 // $(this).prop("checked", false);
+                //  $(this).attr('checked', false);
+              return false();
+                // return false();
+                // $(this).prop( "checked", false );
+                // $('.subject'+key).find('.fa-check').removeClass("fa-check").addClass("fa-plus");
               }
             });
             //ajax to get chapters start
@@ -203,6 +209,7 @@ $('#standard-carousel').owlCarousel({
             //ajax to get chapters end
           }else{
             $('.chapters_list').html("Please select atleast 1 subject."); 
+            
           }
           
         }
@@ -262,6 +269,7 @@ $('#standard-carousel').owlCarousel({
               });
             }else{
               alert('Please select atleast 1 chapter.');
+              return false();
             }
             var url = base_url + "tests/start_progress_test";
               $.ajax({
