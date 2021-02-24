@@ -64,7 +64,7 @@
 				<?php if($this->session->has_userdata('user_is_logged_in')){ 
               $this->load->helper('profile_helper');
                 $user = user_data();
-                echo '"'.ucfirst(strlen($user[0]->first_name." ".$user[0]->last_name)>16?substr(($user[0]->first_name." ".$user[0]->last_name),0,16):$user[0]->first_name." ".$user[0]->last_name).'"';
+                echo '"'.ucfirst(strlen($user[0]->first_name." ".$user[0]->last_name)>50?substr(($user[0]->first_name." ".$user[0]->last_name),0,50):$user[0]->first_name." ".$user[0]->last_name).'"';
          		 }?>
 						</label> congrats for the score.</p>
 						<span>Please find the status of the Test you have gone through. </span>

@@ -36,7 +36,7 @@
                <div class="row">
 			      <div class="profile-title">
 			     		<h3 class="">
-                     		<?php echo (strlen($user[0]->first_name." ".$user[0]->last_name)>16?substr(($user[0]->first_name." ".$user[0]->last_name),0,16):$user[0]->first_name." ".$user[0]->last_name);?>
+                     		<?php echo (strlen($user[0]->first_name." ".$user[0]->last_name)>50?substr(($user[0]->first_name." ".$user[0]->last_name),0,50):$user[0]->first_name." ".$user[0]->last_name);?>
                         </h3>
 					 </div>
 			   </div>    
