@@ -1,4 +1,6 @@
  <!-- Main Content -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <div class="container-fluid">
     <div class="side-body">
 		<div class="page-title"></div>
@@ -78,9 +80,8 @@
 
 							<div class="form-group">
 								<?php echo form_label('Meeting Date<span class="required">*</span>','',array('class'=>'col-sm-2 control-label')); ?>
-								<div class="col-sm-2">
-									<?php echo form_input('meeting_date',set_value('meeting_date'),'placeholder= "Meeting Date" class="form-control" id="meeting_date"'); 
-									if(form_error('meeting_date')) echo form_label(form_error('meeting_date'), 'meeting_date', array("id"=>"meeting_date-error" , "class"=>"error")); ?>
+								<div class="col-sm-2 cc_cursor">
+									<input type="date" name="meeting_date" value="" placeholder="Meeting Date" class="form-control" id="txtDate">
 								</div>
 							</div>
 
@@ -138,6 +139,8 @@
                                 </div>
                             </div>
                             <div class="form-group">
+						
+										
                                 <div class="col-sm-offset-2 col-sm-10">
                                     <button type="submit" class="btn btn-default" title="Save">Save</button>
                                 </div>
@@ -151,3 +154,19 @@
 </div>
 
 
+										<script type="text/javascript">
+											$(function(){
+												var dtToday = new Date();
+												
+												var month = dtToday.getMonth() + 1;
+												var day = dtToday.getDate();
+												var year = dtToday.getFullYear();
+												if(month < 10)
+													month = '0' + month.toString();
+												if(day < 10)
+													day = '0' + day.toString();
+												
+												var maxDate = year + '-' + month + '-' + day;										
+												$('#txtDate').attr('min', maxDate);
+											});
+										</script>

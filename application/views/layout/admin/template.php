@@ -5,7 +5,13 @@
 <!DOCTYPE html>
 <html>
 	<head>
-    	<title>E4U - Admin Panel</title>
+    	<title> 
+    	<?php
+		if(!empty($page_title))
+		{			
+		echo $page_title;
+		}		
+		?>	 - Admin Panel</title>
     	<link rel="shortcut icon" type="image/x-icon" href="<?php echo base_url()."assets/site/" ?>favicon.ico" />
     	<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta http-equiv="content-type" content="text/html;charset=UTF-8"/>

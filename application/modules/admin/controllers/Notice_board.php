@@ -78,7 +78,7 @@ class Notice_board extends Admin_Controller
 		   $data['get_course'] = $this->base_model->getSelectList('courses');			   
 		   $this->pagination->initialize($config);
 			$data['main_content'] = 'notice_board/index';
-		  	$data['page_title']  = 'notice_board'; 
+		  	$data['page_title']  = 'Notice Board'; 
 		  	$this->load->view(ADMIN_LAYOUT_PATH, $data); 	
 		}
 		public function reset()
@@ -124,13 +124,13 @@ class Notice_board extends Admin_Controller
 				$data['course_list'] = $this->base_model->getSelectList('courses');
 				$data['class_list'] = $this->base_model->getSelectList('classes');
 				$data['main_content'] = 'notice_board/add';
-				$data['page_title']  = 'notice_board'; 
+				$data['page_title']  = 'Notice Board'; 
 				$this->load->view(ADMIN_LAYOUT_PATH, $data); 
 			}else{
 				$data['course_list'] = $this->base_model->getSelectList('courses');
 				$data['class_list'] = $this->base_model->getSelectList('classes');
 				$data['main_content'] = 'notice_board/add';
-				$data['page_title']  = 'notice_board'; 
+				$data['page_title']  = 'Notice Board'; 
 				$this->load->view(ADMIN_LAYOUT_PATH, $data); 
 			}
 				
@@ -176,7 +176,7 @@ class Notice_board extends Admin_Controller
 			  	}
 
 				$data['main_content'] = 'notice_board/edit';
-			  	$data['page_title']  = 'notice_board'; 
+			  	$data['page_title']  = 'Notice Board'; 
 			  	$this->load->view(ADMIN_LAYOUT_PATH, $data); 	
 			}else{
 
@@ -192,7 +192,7 @@ class Notice_board extends Admin_Controller
 				$data['hidden'] = $course_id;
 				$data['notice_board'] = $data['notice_board_main'][0];
 				$data['main_content'] = 'notice_board/edit';
-			  	$data['page_title']  = 'notice_board'; 
+			  	$data['page_title']  = 'Notice Board'; 
 			  	$this->load->view(ADMIN_LAYOUT_PATH, $data); 	
 			}
 		  	

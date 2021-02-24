@@ -23,11 +23,14 @@
                     <h1>Distinction of Courses </h1>
                 </div>
                 <div class="row">
+                  <?php $i=0; $a='';?>
                 <?php foreach($courses as $course){ ?>
+
                     <div class="col-md-4 col-sm-4 courses-details" data-aos="fade-up" data-aos-duration="3000"  data-aos-delay="50">
                         <img width="197px" height="197px" src="<?php echo base_url().'appdata/course_plans/'.$course['image'];?>" alt="courses">
                         <h2><?php echo $course['name'];?> </h2>
-                        <p><?php echo htmlspecialchars_decode($course['description']);?> </p>
+                        <p class="str<?php echo $i; ?>"><?php echo htmlspecialchars_decode($course['description']);?> </p>
+                      <?php $a=$i; $i++;?>
                          <?php //print_r($is_expired);print_r($check_purchased);?>
                         <?php 
                           if(isset($is_expired[$course['id']]))
@@ -338,6 +341,27 @@ if(isset($show_reset_modal) && $show_reset_modal==2){
        $('#header-inner').removeClass('newClass');
     }
 });
+   </script>
+
+   <script type="text/javascript">
+    var count1= <?php echo $a; ?>;
+    var i;
+    // console.log(count1);
+    // console.log("Hello world!");
+    for(i=0;  i<=count1; i++){
+      
+ var string = $('.str'+i).text();
+ var string2 =$('.str'+i);
+var str50 = string.substr(0,50) 
+$('.str+i').html(str50+'...'+'<a class="readmore">readmore</a>');
+$('.str+i').attr('data-text',string);
+$('.readmore').click(function()
+{
+    $(this).parent().html($(this).parent().attr('data-text'))
+    
+})
+}
+
    </script>
       
     

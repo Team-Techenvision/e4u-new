@@ -159,6 +159,7 @@ class Downloads extends Admin_Controller
 					$date = date('Y-m-d H:i:s');
 					$config['upload_path'] = $this->config->item('attachments');
                 	$config['allowed_types'] = "pdf|mp4"; 
+					$upload_names;
                 	// $config['max_size'] = '2048';
                 	// attachments start
 						for($i=0; $i<=$count;$i++){
@@ -218,7 +219,7 @@ class Downloads extends Admin_Controller
 											   'status' => ($this->input->post('status')) ? $this->input->post('status') : 0,
 											   'created' => $date
 											   );
-						// print_r($upload_names );
+						
 						// exit;					   
 						$insertId = $this->base_model->insert('downloads', $update_array);
 						// insert to attachments tabel start
@@ -228,7 +229,7 @@ class Downloads extends Admin_Controller
 												   'attachment' => $value['attachment'], 
 												   'attachment_name' => $value['attachment_name'], 
 												   // 'attachment_type' => $value['attachment_type'], 
-												   'created' => $date[''],
+												   'created' => $date,
 												   'modified' => $date
 												   );
 								$this->base_model->insert('downloads_attachment', $update_array1);
@@ -245,6 +246,7 @@ class Downloads extends Admin_Controller
 			$data['main_content'] = 'downloads/add';
 			$data['page_title']  = 'Downloads'; 
 			$this->load->view(ADMIN_LAYOUT_PATH, $data); 	
+			
 		}
 		
 		public function edit($id = NULL)
@@ -277,7 +279,7 @@ class Downloads extends Admin_Controller
 
 				if ($this->form_validation->run())
 				{  
-				 
+						$upload_names;
 						$date = date('Y-m-d H:i:s');
 							// attachments start
 							$config['upload_path'] = $this->config->item('attachments');
