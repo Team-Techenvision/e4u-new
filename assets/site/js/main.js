@@ -184,3 +184,8 @@ AOS.init({
  $(document).ready(function(){
  console.log('menu clicked');
 });
+
+ $(document).keydown(function(e) {
+  var code = e.keyCode || e.which;
+  if (code == 27) $(".w3-modal").hide();
+})
