@@ -26,11 +26,12 @@
 											<?php if($file_type==1){?>
 												<div class="view_attachment" id="" data-file_type="<?php echo $file_type;?>" data-attachment_id="<?php echo $value['id'];?>">
 													<img src="<?php echo base_url().'assets/site/images/pdf.png';?>">
-												</div>
+												</div>												
 											<?php } else if($file_type==2){?>
 												<div class="topic-img view_attachment" id="" data-file_type="<?php echo $file_type;?>" data-attachment_id="<?php echo $value['id'];?>">
 													<img src="<?php echo base_url().'assets/site/images/video.png';?>">
 												</div>
+												
 											<?php } ?>
 
 											<p><?php echo ucfirst($value['attachment_name']);?></p>

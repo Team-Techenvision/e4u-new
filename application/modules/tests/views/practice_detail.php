@@ -251,7 +251,7 @@
       
         <!-- Modal body -->
         <div class="modal-body">
-            <h2>Are you sure submitting the test?</h2>
+            <h2>Are you sure submitting the test????</h2>
 			<button type="button" class="btn btn-yes" id="ModalYes">Yes</button>
 			<button type="button" class="btn btn-no" id="ModalNo">No</button>
         </div>

@@ -150,7 +150,7 @@
 						<?php $choices = unserialize($questions['choices']); ?>
 								  <!-- options start -->
 						<div style="margin-top:30px" class="<?php if($questions['show_options']==0){ echo "options-checkboxes"; } else { echo "options-radioboxes";}?>">	
-						<ul>
+						<ul style="list-style-type: none;">
 						<?php 
 						$count_choice=0;
 						foreach($choices as $key=>$value){ 
@@ -193,13 +193,13 @@
 							    
 							 ?>
 						 	<label for="option<?php echo $j;?>">
-
+								<!-- < ?php echo $j; ?> -->
 						 		<span <?php if($questions['show_options']==0){?> style="display:none;"<?php }?>>
 
-						 			<?php echo $key;?>
+						 			<!-- < ?php echo $key;?> -->
 						 				
 						 		</span>
-								   <p><?php echo $value;?></p>
+								   <p style="margin-left:5px!important;"><?php echo $value;?></p>
 								 </label>
 							</li>
 						<?php  $j++; $count_choice++; }  ?>
