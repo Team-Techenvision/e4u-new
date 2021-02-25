@@ -1,5 +1,20 @@
 <section class="meeting-part">
   <div class="container">
+    <style type="text/css">
+      .courses .courses-details span {
+        font-size: 16px !important;
+      }
+      a.morelink {
+      text-decoration:none;
+      outline: none;
+    }
+    .morecontent span {
+      display: none;
+    }
+    .mh-200{
+      min-height: 100px;
+    }
+</style>
     <h2>Meeting</h2>
     <!-- <div class="row owl-carousel owl-theme" id="meeting-carousel"> -->
     <div class="row"> 
@@ -35,7 +50,7 @@
       <div class="col-md-4 col-sm-12" style="padding-bottom: 25px;">
         <div class="meet-in-sec">
           <h3><?php echo $value['meeting_topic']?></h3>
-          <p class="annual-conf">
+          <p class="annual-conf comment more mh-200">
           <?php echo  " $description "; ?>
           </p>
           <div class="met-whole-sec">
@@ -45,6 +60,9 @@
                   <?php
                   $date=date_create($value['meeting_date']);
                   echo date_format($date,"D j, Y");
+                  $date1   =  date('Y-m-d');
+                  $date2   =   $value['meeting_date'];
+                 
                   ?>
                 </span>
               </p>
@@ -55,8 +73,13 @@
               </p>
             </div>
           </div>
-          <div class="meet-enter-btn"> <a href="<?php echo $value['url'] ?>" target="_blank" >Enter to the meeting</a>
+          <?php if($date1 == $date2){ ?>
+             <div class="meet-enter-btn"> <a href="<?php echo $value['url'] ?>" target="_blank"  >Enter to the meeting</a>
           </div>
+        <?php } else{?>
+          <div class="meet-enter-btn"> <a href="<?php echo $value['url'] ?>" target="_blank" style="pointer-events: none;" >Enter to the meeting</a>
+          </div>
+        <?php } ?>
         </div>
       </div>
       <?php } } 
@@ -64,29 +87,6 @@
         else {
       ?>
          <body>
-
-
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum, nisi lorem egestas vitae scel<span id="dots">...</span><span id="more">erisque enim ligula venenatis dolor. Maecenas nisl est, ultrices nec congue eget, auctor vitae massa. Fusce luctus vestibulum augue ut aliquet. Nunc sagittis dictum nisi, sed ullamcorper ipsum dignissim ac. In at libero sed nunc venenatis imperdiet sed ornare turpis. Donec vitae dui eget tellus gravida venenatis. Integer fringilla congue eros non fermentum. Sed dapibus pulvinar nibh tempor porta.</span></p>
-<button onclick="myFunction()" id="myBtn">Read more</button>
-
-<script>
-function myFunction() {
-  var dots = document.getElementById("dots");
-  var moreText = document.getElementById("more");
-  var btnText = document.getElementById("myBtn");
-
-  if (dots.style.display === "none") {
-    dots.style.display = "inline";
-    btnText.innerHTML = "Read more"; 
-    moreText.style.display = "none";
-  } else {
-    dots.style.display = "none";
-    btnText.innerHTML = "Read less"; 
-    moreText.style.display = "inline";
-  }
-}
-</script>
-
 </body>
 </html>
       <?php }?>
@@ -97,3 +97,44 @@ function myFunction() {
 <?php
 $this->load->view('home/login');
 ?>
+
+<!-- read more script  start-->
+
+<script type="text/javascript">
+ $(document).ready(function() {
+  var showChar = 50;
+  var ellipsestext = "";
+  var moretext = "View More";
+  var lesstext = "Less";
+  $('.more').each(function() {
+    var content = $(this).html();
+
+    if(content.length > showChar) {
+
+      var c = content.substr(0, showChar);
+      var h = content.substr(showChar-0, content.length - showChar);
+
+      var html = c + '<span class="moreelipses"></span>&nbsp;<span class="morecontent "><span>' + h + '</span>&nbsp;&nbsp;<a href="" class="morelink">'+moretext+'</a></span>';
+
+      $(this).html(html);
+    }
+
+  });
+
+  $(".morelink").click(function(){
+    
+    if($(this).hasClass("less")) {
+    $(".std-inner-first").removeClass("height-auto");
+      $(this).removeClass("less");
+      $(this).html(moretext);
+    } else {
+      $(this).addClass("less");
+      $(this).html(lesstext);
+      $(".std-inner-first").addClass("height-auto");
+    }
+    $(this).parent().prev().toggle();
+    $(this).prev().toggle();
+    return false;
+  });
+});
+</script> 

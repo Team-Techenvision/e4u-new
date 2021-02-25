@@ -9,6 +9,36 @@
 	{
 		height:auto;
 	}
+	  .courses .courses-details span {
+    font-size: 16px !important;
+	  }
+	  a.morelink {
+	  text-decoration:none;
+	  outline: none;
+	}
+	.morecontent span {
+	  display: none;
+	}
+	a.banner-course {
+ background-color: #fd6500;
+ color: #fff;
+ padding: 16px 60px 18px 60px;
+ border-radius: 15px;
+ font: 14px/normal Gotham-Medium;
+ position: relative;
+
+}
+.height-auto{
+	min-height: 230px;
+	height: auto!important;
+}
+.std-inner-first {
+border: 3px solid #fd6500;
+padding: 30px 0px 40px 0px;
+position: relative;
+border-radius: 25px;
+min-height: 230px;
+}
 	</style>
 			<?php 
 		 		$course_id = $course_arr['id'];
@@ -24,8 +54,7 @@
 						<div class="row">
 							<h2>Standard Test</h2>
 							<div class="owl-carousel owl-theme" id="standard-carousel">
-								<?php 
-								
+								<?php 								
 								if(count($standard_tests) >0) { 
 									foreach($standard_tests as $standard_test) { 
 									$current_date = date('Y-m-d');
@@ -35,7 +64,9 @@
 									$interval = date_diff($datetime1, $datetime2); 
 									$days =$interval->format('%a');
 									$status = $this->tests_model->get_standard_is_complete_status($standard_test['id']);
+
 								?>
+
 								<div class="item standared-item">
 									<div class="std-inner-Sec">
 										<div class="std-inner-first">
@@ -51,7 +82,7 @@
 												 ?>
 												</span></p>
 												<div class="std-descri">
-													<p><?php echo $standard_test['test_description'];?></p>
+													<p  class="comment more"><?php echo $standard_test['test_description'];?></p>
 													
 												</div>
 											</div>
@@ -131,8 +162,9 @@
                         <div class="slider-wrapper">
                             <div class="item">
                                <div class="notice-cont">
-								<h4><?php echo $notice['title'];?></h4>
-								<p><?php echo $notice['short_description'];?></p>
+							 <div class="text-center pb-2" style="height: 65px;">	<h4><?php echo $notice['title'];?></h4></div>
+								
+								<p class="comment more"><?php echo $notice['short_description'];?></p>
 								</div>
                             </div>
                         </div>
@@ -310,6 +342,51 @@ $(document).on('click','.view_attachment', function(){
 		// 
 	});
 </script>
+
+
+
+<!-- read more script  start-->
+
+<script type="text/javascript">
+ $(document).ready(function() {
+  var showChar = 70;
+  var ellipsestext = "";
+  var moretext = "View More";
+  var lesstext = "Less";
+  $('.more').each(function() {
+    var content = $(this).html();
+
+    if(content.length > showChar) {
+
+      var c = content.substr(0, showChar);
+      var h = content.substr(showChar-0, content.length - showChar);
+
+      var html = c + '<span class="moreelipses"></span>&nbsp;<span class="morecontent "><span>' + h + '</span>&nbsp;&nbsp;<a href="" class="morelink">'+moretext+'</a></span>';
+
+      $(this).html(html);
+    }
+
+  });
+
+  $(".morelink").click(function(){
+  	
+    if($(this).hasClass("less")) {
+    $(".std-inner-first").removeClass("height-auto");
+      $(this).removeClass("less");
+      $(this).html(moretext);
+    } else {
+      $(this).addClass("less");
+      $(this).html(lesstext);
+      $(".std-inner-first").addClass("height-auto");
+    }
+    $(this).parent().prev().toggle();
+    $(this).prev().toggle();
+    return false;
+  });
+});
+</script> 
+
+
 
 
 	

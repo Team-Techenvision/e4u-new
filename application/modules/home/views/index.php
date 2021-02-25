@@ -16,6 +16,19 @@
     </script>
 <?php } ?>
 
+<style type="text/css">
+  .courses .courses-details span {
+    font-size: 16px !important;
+  }
+  a.morelink {
+  text-decoration:none;
+  outline: none;
+}
+.morecontent span {
+  display: none;
+}
+</style>
+
 
         <section class="courses"  data-aos="fade-down" data-aos-duration="2000"  data-aos-easing="ease-in-out">
             <div class="container">
@@ -29,7 +42,7 @@
                     <div class="col-md-4 col-sm-4 courses-details" data-aos="fade-up" data-aos-duration="3000"  data-aos-delay="50">
                         <img width="197px" height="197px" src="<?php echo base_url().'appdata/course_plans/'.$course['image'];?>" alt="courses">
                         <h2><?php echo $course['name'];?> </h2>
-                        <p class="str<?php echo $i; ?>"><?php echo htmlspecialchars_decode($course['description']);?> </p>
+                        <p class="comment more"><?php echo htmlspecialchars_decode($course['description']);?> </p>
                       <?php $a=$i; $i++;?>
                          <?php //print_r($is_expired);print_r($check_purchased);?>
                         <?php 
@@ -343,25 +356,40 @@ if(isset($show_reset_modal) && $show_reset_modal==2){
 });
    </script>
 
-   <script type="text/javascript">
-    var count1= <?php echo $a; ?>;
-    var i;
-    // console.log(count1);
-    // console.log("Hello world!");
-    for(i=0;  i<=count1; i++){
+   
       
- var string = $('.str'+i).text();
- var string2 =$('.str'+i);
-var str50 = string.substr(0,50) 
-$('.str+i').html(str50+'...'+'<a class="readmore">readmore</a>');
-$('.str+i').attr('data-text',string);
-$('.readmore').click(function()
-{
-    $(this).parent().html($(this).parent().attr('data-text'))
-    
-})
-}
+<script type="text/javascript">
+ $(document).ready(function() {
+  var showChar = 50;
+  var ellipsestext = "";
+  var moretext = "View More";
+  var lesstext = "Less";
+  $('.more').each(function() {
+    var content = $(this).html();
 
-   </script>
-      
-    
+    if(content.length > showChar) {
+
+      var c = content.substr(0, showChar);
+      var h = content.substr(showChar-0, content.length - showChar);
+
+      var html = c + '<span class="moreelipses"></span>&nbsp;<span class="morecontent "><span>' + h + '</span>&nbsp;&nbsp;<a href="" class="morelink">'+moretext+'</a></span>';
+
+      $(this).html(html);
+    }
+
+  });
+
+  $(".morelink").click(function(){
+    if($(this).hasClass("less")) {
+      $(this).removeClass("less");
+      $(this).html(moretext);
+    } else {
+      $(this).addClass("less");
+      $(this).html(lesstext);
+    }
+    $(this).parent().prev().toggle();
+    $(this).prev().toggle();
+    return false;
+  });
+});
+</script>    
