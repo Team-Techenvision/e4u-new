@@ -13,7 +13,7 @@
                           $class_added="profile-pic";
                          if($user[0]->profile_image!=""){
                          // $img_src = thumb($this->config->item('profile_image_url') .$user[0]->profile_image ,'thumb_profile_img',$maintain_ratio = TRUE);
-                              $img_prp = array('src' => base_url() . 'appdata/profile/'.$user[0]->profile_image, 'alt' => 'Profile', 'title' =>strlen($user[0]->first_name." ".$user[0]->last_name)>16?substr(($user[0]->first_name." ".$user[0]->last_name),0,16):$user[0]->first_name." ".$user[0]->last_name , 'id' => 'wizardPicturePreview','class'=>$class_added , 'width'=>'148px' , 'height' => '148px');
+                              $img_prp = array('src' => base_url() . 'appdata/profile/'.$user[0]->profile_image, 'alt' => 'Profile', 'title' =>strlen($user[0]->first_name." ".$user[0]->last_name)>50?substr(($user[0]->first_name." ".$user[0]->last_name),0,50):$user[0]->first_name." ".$user[0]->last_name , 'id' => 'wizardPicturePreview','class'=>$class_added , 'width'=>'148px' , 'height' => '148px');
                          }else{
                          	if($user[0]->gender == 1) {
                               $img_src = 'assets/site/images/no-image-men.png';
@@ -21,7 +21,7 @@
                           	else{
                           	  $img_src = 'assets/site/images/no-image.png';	
                           	}
-                           $img_prp=array('src' => base_url() .$img_src, 'alt' => 'Profile', 'title'=>strlen($user[0]->first_name." ".$user[0]->last_name)>16?substr(($user[0]->first_name." ".$user[0]->last_name),0,16):$user[0]->first_name." ".$user[0]->last_name, 'id' => 'wizardPicturePreview','class'=>$class_added , 'width'=>'148px' , 'height' => '148px');
+                           $img_prp=array('src' => base_url() .$img_src, 'alt' => 'Profile', 'title'=>strlen($user[0]->first_name." ".$user[0]->last_name)>50?substr(($user[0]->first_name." ".$user[0]->last_name),0,50):$user[0]->first_name." ".$user[0]->last_name, 'id' => 'wizardPicturePreview','class'=>$class_added , 'width'=>'148px' , 'height' => '148px');
                          }
                          ?>
                         <?php echo img($img_prp);?>

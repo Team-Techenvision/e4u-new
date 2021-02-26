@@ -117,6 +117,10 @@
 
 						</div>
 
+						<style>
+						#pagination-demo li{display:none!important;}
+						</style>
+
 
 					</div>
 				<!-- </div> -->

@@ -197,9 +197,9 @@
 							    //echo form_checkbox('options[]',$key,$checked,array('class'=>'options progress_options option_'.$key, 'id'=>'option'.$j)); 
 							 ?>
 						 	<label for="option<?php echo $j;?>">
-						 		<span <?php if($questions['show_options']==0){?> style="display:none;" <?php }?>>
-						 				<?php echo $key;?>
-						 		</span>
+						 		<!-- <span < ?php if($questions['show_options']==0){?> style="display:none;" < ?php }?>>
+						 				<! -- < ?php echo $key;?> - ->
+						 		</span> -->
 						 	<p><?php echo $value;?></p></label>
 							</li>
 						<?php  $j++; $count_choice++; }  ?>
