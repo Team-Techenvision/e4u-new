@@ -5,10 +5,12 @@
 								<?php if(count($study_material)>0) { 
 									foreach($study_material as $material){ 
 									 ?>
+								<div class="carousel clearfix">
+								<div class="carousel-view clearfix">
 								<div class="inner-topic-Sec">
 									<h4><?php echo ucfirst($material['download_name']);?> </h4>
 									<p>
-										<?php echo ucfirst($material['comments']);?> 
+										<?php echo nl2br(ucfirst($material['comments']));?> 
 									</p>
 									<div class="row">
 										
@@ -39,6 +41,9 @@
 										<?php } ?>
 									</div>
 								</div>
+
+								</div><!-- carosel-view End -->
+								</div><!-- carosel End -->
 							<?php }}else{
 								echo "No Materials Found";
 							} ?>

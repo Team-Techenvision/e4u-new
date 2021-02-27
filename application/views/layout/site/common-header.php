@@ -16,6 +16,10 @@
     <link href="<?php echo base_url().'assets/site/css/responsive.css';?>" rel="stylesheet">
     
     <link href="<?php echo base_url().'assets/site/css/owl.carousel.min.css';?>" rel="stylesheet">
+	<!-- ============================= -->
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css"/>
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.css">
+	<!-- ====================== -->
 
 <script type="text/javascript">
 	var base_url = '<?php echo base_url();?>';
@@ -37,7 +41,8 @@
       	<script src="<?php echo base_url().'assets/site/js/pdf.js';?>"></script>
       	<script src="<?php echo base_url().'assets/site/js/pdf.worker.js';?>"></script>
 	 	<script src="<?php echo base_url().'assets/site/js/aos.js';?>"></script>
-	 	 <script type="text/javascript" src="<?php echo base_url();?>assets/site/js/jquery.countdown.js"></script> 
+	 	<script type="text/javascript" src="<?php echo base_url();?>assets/site/js/jquery.countdown.js"></script>
+		<script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js"></script> 
 
        
 <?php

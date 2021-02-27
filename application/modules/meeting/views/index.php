@@ -16,15 +16,32 @@
     }
 </style>
     <h2>Meeting</h2>
-    <!-- <div class="row owl-carousel owl-theme" id="meeting-carousel"> -->
+   
     <div class="row"> 
     <?php 
     // echo "<pre>";
     // print_r($meeting);
     $i = 1;
-
-     if(count($meeting) > 0 ) {
+ // ===============================================================
+ ?>
+ <div class="col-sm-12">
+ <table id="example" class="table table-striped table-bordered" style="width:100%">
+ <thead>
+    <tr>
+    <th class="col-sm-12">Meeting</th>
+    
+    
+    </tr>
+  </thead>
+ <tbody>
+ <tr>
+ <?php
+// ===============================================================
+?> <td class="col-md-4 col-sm-12" > <?php
+     if(count($meeting) > 0 ) 
+     {
       foreach ($meeting as $key => $value) {
+     
         $dbDate = $value['meeting_date'];	
         $hf = $value['hours_from'];
         $mf = $value['mins_from'];
@@ -47,9 +64,9 @@
               $description .= '...';
           }
       ?>
-      <div class="col-md-4 col-sm-12" style="padding-bottom: 25px;">
+      <div class="col-md-4 col-sm-12 float-left" style="padding-bottom: 25px;">
         <div class="meet-in-sec">
-          <h3><?php echo $value['meeting_topic']?></h3>
+          <h3 style="font-size:19px;"><?php echo $value['meeting_topic']?></h3>
           <p class="annual-conf comment more mh-200">
           <?php echo  " $description "; ?>
           </p>
@@ -82,7 +99,7 @@
         <?php } ?>
         </div>
       </div>
-      <?php } } 
+      <?php }   }    
         //} 
         else {
       ?>
@@ -90,10 +107,22 @@
 </body>
 </html>
       <?php }?>
+   <!-- ============================== -->
+   </td>
+          </tr>
+          </tbody>
+     </table>  
+    </div> 
+   <!-- ================================== -->
     </div>
   </div>
 </section>
-
+<style>
+.dataTables_filter
+{
+  display:none;
+}
+</style>
 <?php
 $this->load->view('home/login');
 ?>
@@ -136,5 +165,40 @@ $this->load->view('home/login');
     $(this).prev().toggle();
     return false;
   });
+
+
+
+// ====================================
+
+$('#example').DataTable();
+
+// ========================
+
 });
 </script> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js" crossorigin="anonymous"></script>
+<script>
+$('.carousel-view').slick({
+  dots: false,
+  infinite: false,
+  speed: 300,
+  slidesToShow: 3,
+  slidesToScroll: 3,
+  responsive: [
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1
+      }
+    }
+  ]
+});
+</script>

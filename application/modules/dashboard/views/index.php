@@ -388,7 +388,27 @@ $(document).on('click','.view_attachment', function(){
     return false;
   });
 });
-</script> 
+</script>
+
+<!-- ======================================= -->
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.js"></script>
+	<script>
+		$(document).ready( function () 
+		{
+			$('#table_id').DataTable();
+		});
+	</script>
+<!-- ============================ -->
+<!-- ============================= -->
+<!-- <script>
+	function ESCclose(evt) {
+	if (evt.keyCode == 27) {
+		//window.close();
+		console.log('close the window...')
+	}
+	}
+</script> -->
+<!-- ============================== -->
 
 
 
